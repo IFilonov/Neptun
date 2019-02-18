@@ -5,3 +5,18 @@ ru:
       log_out: "Выход"
       welcome: "Добро пожаловать"
       sign_up: "Регистрация"
+  admin:
+    users:
+      index:
+        header: "Пользователи"
+        back: "Назад"
+        are_you_sure: "Вы уверены?"
+  servers:
+    index:
+      servers: "Список серверов"
+      edit: "Изменить"
+      destroy: "Удалить"
+      new_server: "Создать"
+    new:
+      new_server: "Новый сервер"
+      back: "Назад"  

@@ -1,0 +1,39 @@
+<div class="row mt-3">
+  <div class="col col-md-6 ">
+    <h4><%= t('.header') %></h4>
+    <p id="notice"><%= notice %></p>
+
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th>email</th>
+          <th>sign_in_count</th>
+          <th>current_sign_in_at</th>
+          <th>last_sign_in_at</th>
+          <th>current_sign_in_ip</th>
+          <th>last_sign_in_ip</th>
+          <th>created_at</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td scope="row"><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.sign_in_count %></td>
+            <td><%= user.current_sign_in_at %></td>
+            <td><%= user.last_sign_in_at %></td>
+            <td><%= user.current_sign_in_ip %></td>
+            <td><%= user.last_sign_in_ip %></td>
+            <td><%= user.created_at %></td>
+            <td><%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<%= link_to t('.back'), :back %>
