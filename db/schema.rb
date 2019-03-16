@@ -10,13 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_18_062142) do
+ActiveRecord::Schema.define(version: 2019_02_18_200455) do
 
   create_table "servers", force: :cascade do |t|
     t.string "host_name", null: false
     t.string "ip", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "path"
+    t.integer "group"
+    t.string "start"
+    t.string "stop"
+    t.integer "server_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["server_id"], name: "index_services_on_server_id"
   end
 
   create_table "users", force: :cascade do |t|

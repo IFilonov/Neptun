@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  path: MyString
+  group: 1
+  start: MyString
+  stop: MyString
+  server: one
+  status: 1
+
+two:
+  name: MyString
+  path: MyString
+  group: 1
+  start: MyString
+  stop: MyString
+  server: two
+  status: 1

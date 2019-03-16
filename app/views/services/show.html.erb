@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @service.name %>
+</p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @service.path %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @service.group %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @service.start %>
+</p>
+
+<p>
+  <strong>Stop:</strong>
+  <%= @service.stop %>
+</p>
+
+<p>
+  <strong>Server:</strong>
+  <%= @service.server %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @service.status %>
+</p>
+
+<%= link_to 'Edit', edit_service_path(@service) %> |
+<%= link_to 'Back', services_path %>
