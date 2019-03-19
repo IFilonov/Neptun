@@ -1,12 +1,12 @@
+<div class="container">
 <div class="row justify-content-center mt-3">
-  <div class="col col-md-6">
-    <table class="table table-sm">
-      <caption>Services</caption>
+  <div class="col col-6 shadow-lg p-3 mb-5 bg-white rounded">
+    <table class="table bg-light table-sm">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Commands</th>
-          <th>Status</th>
+          <th>Сервер</th>
+          <th>Команда</th>
+          <th>Статус</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -16,9 +16,9 @@
           <tr>
             <td><%= service.name %></td>
             <td>
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <%= link_to "Start", start_service_path(service), remote: true, class: "btn btn-outline-success btn-sm"%>
-                <%= link_to "Stop", stop_service_path(service), remote: true, class: "btn btn-outline-danger btn-sm" , data: { confirm: 'Are you really want stop service?' } %>
+              <div class="btn-group" role="group">
+                <%= link_to "Start", start_service_path(service), class: "btn  btn-primary btn-sm"%>
+                <%= link_to "Stop", stop_service_path(service), class: "btn btn-danger btn-sm" , data: { confirm: 'Are you really want stop service?' } %>
               </div>
             </td>
             <td><%= service.status %></td>
@@ -26,7 +26,7 @@
               <div class="btn-group" role="group" aria-label="Basic example">
                 <%= link_to 'Show', service, class: "btn btn-outline-primary btn-sm"%>
                 <%= link_to 'Edit', edit_service_path(service), class: "btn btn-outline-primary btn-sm"%>
-                <%= link_to 'Drop', service, method: :delete, class: "btn btn-outline-primary btn-sm", data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Drop', service, method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: 'Are you sure?' } %>
               </div>
             </td>
           </tr>
@@ -34,8 +34,42 @@
       </tbody>
     </table>
 
-    <br>
-
-    <%= link_to 'New Service', new_service_path %>
   </div>
+  <div class="col col-6 shadow-lg p-3 mb-5 bg-white rounded">
+    <table class="table table-sm bg-light">
+      <thead>
+        <tr>
+          <th>Сервер</th>
+          <th>Команда</th>
+          <th>Статус</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @services.each do |service| %>
+          <tr>
+            <td><%= service.name %></td>
+            <td>
+              <div class="btn-group" role="group">
+                <%= link_to "Start", start_service_path(service), class: "btn btn-primary btn-sm"%>
+                <%= link_to "Stop", stop_service_path(service), class: "btn btn-danger btn-sm" , data: { confirm: 'Are you really want stop service?' } %>
+              </div>
+            </td>
+            <td><%= service.status %></td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <%= link_to 'Show', service, class: "btn btn-outline-primary btn-sm"%>
+                <%= link_to 'Edit', edit_service_path(service), class: "btn btn-outline-primary btn-sm"%>
+                <%= link_to 'Drop', service, method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: 'Are you sure?' } %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
 </div>

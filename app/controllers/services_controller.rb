@@ -1,81 +1,74 @@
 class ServicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: [:show, :edit, :update, :destroy, :start, :stop]
 
-  # GET /services
-  # GET /services.json
   def index
     @services = Service.all
   end
 
-  # GET /services/1
-  # GET /services/1.json
   def show
   end
 
-  # GET /services/new
   def new
     @service = Service.new
   end
 
-  # GET /services/1/edit
   def edit
   end
 
-  # POST /services
-  # POST /services.json
   def create
     @service = Service.new(service_params)
 
     respond_to do |format|
       if @service.save
         format.html { redirect_to @service, notice: 'Service was successfully created.' }
-        format.json { render :show, status: :created, location: @service }
       else
         format.html { render :new }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /services/1
-  # PATCH/PUT /services/1.json
   def update
     respond_to do |format|
       if @service.update(service_params)
         format.html { redirect_to @service, notice: 'Service was successfully updated.' }
-        format.json { render :show, status: :ok, location: @service }
       else
         format.html { render :edit }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /services/1
-  # DELETE /services/1.json
   def destroy
     @service.destroy
     respond_to do |format|
       format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
   def start
+    answer = send_command(@service.start)
+    redirect_to services_path(:anchor => "wall"), notice: answer
   end
 
   def stop
+    answer = send_command(@service.stop)
+    redirect_to services_path(:anchor => "wall"), notice: answer
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_service
       @service = Service.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
       params.require(:service).permit(:name, :path, :group, :start, :stop, :server_id, :status)
+    end
+
+    def send_command(cmd)
+      ssh = SshService.new(@service.server.host_name, current_user.ldap_login, current_user.ldap_password);
+      ssh.send_command(@service.path) if @service.path.length > 0
+      answer = ssh.send_command(cmd)
+      ssh.close
+      answer.byteslice(0, 2000)
     end
 end
