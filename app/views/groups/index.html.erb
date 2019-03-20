@@ -1,0 +1,28 @@
+<div class="row mt-3">
+  <div class="col col-md-6 ">
+    <h4 class="text-primary"><%= t('.servers') %></h4>
+
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>align_left</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @groups.each do |group| %>
+          <tr>
+            <td><%= group.name %></td>
+            <td><%= group.align_left %></td>
+            <td><%= link_to t('.edit'), edit_group_path(group) %></td>
+            <td><%= link_to t('.destroy'), server, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<%= link_to t('.new_group'), new_group_path %>

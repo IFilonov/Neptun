@@ -1,39 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="row justify-content-center mt-3">
+  <div class="col col-md-4">
+    <h2 align=center class="card-header"><%= @service.name %></h2>
+    <div class="card text-white mb-3" style="background-color: #8B008B;">
+      <div class="card-body">
+        <p id="notice" class="card-text"><%= notice %></p>
+        <p class="card-text">
+          <strong>Path:</strong>
+          <%= @service.path %>
+        </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @service.name %>
-</p>
+        <p class="card-text">
+          <strong>Group:</strong>
+          <%= @service.group %>
+        </p>
 
-<p>
-  <strong>Path:</strong>
-  <%= @service.path %>
-</p>
+        <p class="card-text">
+          <strong>Start:</strong>
+          <%= @service.start %>
+        </p>
 
-<p>
-  <strong>Group:</strong>
-  <%= @service.group %>
-</p>
+        <p class="card-text">
+          <strong>Stop:</strong>
+          <%= @service.stop %>
+        </p>
 
-<p>
-  <strong>Start:</strong>
-  <%= @service.start %>
-</p>
+        <p class="card-text">
+          <strong>Server:</strong>
+          <%= @service.server %>
+        </p>
 
-<p>
-  <strong>Stop:</strong>
-  <%= @service.stop %>
-</p>
+        <p class="card-text">
+          <strong>Status:</strong>
+          <%= @service.status %>
+        </p>
 
-<p>
-  <strong>Server:</strong>
-  <%= @service.server %>
-</p>
+        <%= link_to 'Edit', edit_service_path(@service), class: "btn btn-light" %>
 
-<p>
-  <strong>Status:</strong>
-  <%= @service.status %>
-</p>
-
-<%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>
+        <%= link_to 'Back', services_path, class: "btn btn-light" %>
+      </div>
+    </div>
+  </div>
+</div>

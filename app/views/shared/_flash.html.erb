@@ -1,7 +1,10 @@
-<nav class="navbar fixed-bottom navbar-light bg-light">
-  <span class="navbar-text">
+<div class="input-group"  style="padding-top:50px">
+  <textarea class="form-control" rows="3" style="font-size: 11pt" disabled>
     <% flash.each do |key, message| %>
       <%= content_tag :p, message, class: "flash #{key}" %>
     <% end %>
-  </span>
-</nav>
+  </textarea>
+</div>
+<div class="input-group" style="max-height: 50%;">
+  <textarea class="form-control" rows="1" style="font-size: 12pt;max-height: 28pt;">ls</textarea>
+</div>

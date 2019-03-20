@@ -38,7 +38,7 @@ gem 'devise', '~> 4.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'jquery-rails'
-gem 'bootstrap', '~> 4.1.2'
+gem 'bootstrap', '~> 4.3.1'
 gem 'net-ssh'
 
 group :development, :test do

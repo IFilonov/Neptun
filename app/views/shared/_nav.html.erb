@@ -1,5 +1,7 @@
-<nav class="navbar navbar-light bg-primary">
+<nav class="navbar navbar-dark fixed-top" style="background-color: #8B008B;">
   <%= link_to t('.neptun'), root_path, class: 'navbar-brand' %>
+  <div class="spinner-grow text-light" role="status">
+  </div>
   <%= link_to 'Новый сервис', new_service_path, class: 'navbar-brand' %>
   <span class="navbar-text">
     <% if user_signed_in? %>
