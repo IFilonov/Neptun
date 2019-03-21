@@ -1,51 +1,53 @@
 <%= form_with(model: service, local: true) do |form| %>
-  <% if service.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
 
-      <ul>
-      <% service.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :path %>
-    <%= form.text_field :path %>
-  </div>
-
-  <div class="field">
-    <%= form.label :group %>
-    <%= form.number_field :group %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start %>
-    <%= form.text_field :start %>
-  </div>
-
-  <div class="field">
-    <%= form.label :stop %>
-    <%= form.text_field :stop %>
-  </div>
-
-  <div class="field">
-    <%= form.label :server_id %>
-    <%= form.collection_select :server_id, Server.all, :id, :host_name, prompt: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.number_field :status %>
-  </div>
-
+  <table class="table">
+    <td>
+      <div class="text-white">
+        <%= form.label :name %>
+      </div>
+      <div class="text-white">
+        <%= form.label :path %>
+      </div>
+      <div class="text-white">
+        <%= form.label :group %>
+      </div>
+      <div class="text-white">
+        <%= form.label :start %>
+      </div>
+      <div class="text-white">
+        <%= form.label :stop %>
+      </div>
+      <div class="text-white">
+        <%= form.label :server_id %>
+      </div>
+      <div class="text-white">
+        <%= form.label :status %>
+      </div>
+    </td>
+    <td>
+      <div class="text-white">
+        <%= form.text_field :name %>
+      </div>
+      <div class="text-white">
+        <%= form.text_field :path %>
+      </div>
+      <div class="text-white">
+        <%= form.number_field :group %>
+      </div>
+      <div class="text-white">
+        <%= form.text_field :start %>
+      </div>
+      <div class="text-white">
+        <%= form.text_field :stop %>
+      </div>
+      <div>
+        <%= form.collection_select :server_id, Server.all, :id, :host_name, prompt: true %>
+      </div>
+      <div class="text-white">
+        <%= form.number_field :status %>
+      </div>
+    </td>
+  </table>
   <div class="actions">
     <%= form.submit %>
   </div>
