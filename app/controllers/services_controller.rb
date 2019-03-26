@@ -3,7 +3,7 @@ class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy, :start, :stop]
 
   def index
-    @services = Service.all
+    @services = Service.order(:group_id, :id)
   end
 
   def show
@@ -61,7 +61,7 @@ class ServicesController < ApplicationController
     end
 
     def service_params
-      params.require(:service).permit(:name, :path, :group, :start, :stop, :server_id, :status)
+      params.require(:service).permit(:name, :path, :group_id, :start, :stop, :server_id, :status)
     end
 
     def send_command(cmd)

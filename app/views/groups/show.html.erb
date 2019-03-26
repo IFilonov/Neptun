@@ -7,14 +7,17 @@
           <strong>Path:</strong>
           <%= @group.name %>
         </p>
-
         <p class="card-text">
-          <strong>Group:</strong>
+          <strong>Position:</strong>
+          <%= @group.position %>
+        </p>
+        <p class="card-text">
+          <strong>Align:</strong>
           <%= @group.align_left %>
         </p>
         <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-light" %>
 
-        <%= link_to 'Back', group_path, class: "btn btn-light" %>
+        <%= link_to 'Back', groups_path, class: "btn btn-light" %>
       </div>
     </div>
   </div>

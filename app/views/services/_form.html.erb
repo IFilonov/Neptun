@@ -31,10 +31,10 @@
       <div class="text-white">
         <%= form.text_field :path %>
       </div>
-      <div class="text-white">
-        <%= form.number_field :group %>
+      <div>
+        <%= form.collection_select :group_id, Group.all, :id, :name, prompt: true %>
       </div>
-      <div class="text-white">
+        <div class="text-white">
         <%= form.text_field :start %>
       </div>
       <div class="text-white">

@@ -51,6 +51,6 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:name, :align_left)
+    params.require(:group).permit(:name, :align_left, :position)
   end
 end

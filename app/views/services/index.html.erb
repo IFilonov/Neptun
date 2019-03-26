@@ -1,80 +1,10 @@
-<div class="spinner-grow text-success" style="position: absolute; top: 50%; left: 50%; margin-top: -1.5rem; margin-left: -1.5rem; width: 3rem; height: 3rem;" role="status">
-<span class="sr-only">Loading...</span>
-</div>
-<div class="row justify-content-center mt-3" >
-  <div class="col col-6 shadow-lg p-3 mb-5 bg-white rounded">
-    <table class="bg-light table-sm">
-      <thead>
-        <tr>
-          <th>Сервер</th>
-          <th>Команда</th>
-          <th>Статус</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @services.each do |service| %>
-          <tr>
-            <td><%= service.name %></td>
-            <td>
-              <div class="btn-group" role="group">
-                <%= link_to "Start", start_service_path(service), class: "btn btn-dark btn-sm", style: "background-color: #8B008B;"%>
-                <%= link_to "Stop", stop_service_path(service), class: "btn btn-warning btn-sm text-white" , style: "background-color: #FF8C00;" , data: { confirm: 'Are you really want stop service?' } %>
-                <%= link_to "Restart", stop_service_path(service), class: "btn btn-danger btn-sm" , data: { confirm: 'Are you really want stop service?' } %>
-              </div>
-            </td>
-            <td><%= service.status %></td>
-            <td>
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <%= link_to 'Show', service, class: "btn btn-outline-warning btn-sm" %>
-                <%= link_to 'Edit', edit_service_path(service), class: "btn btn-outline-warning btn-sm"%>
-                <%= link_to 'Drop', service, method: :delete, class: "btn btn-outline-warning btn-sm", data: { confirm: 'Are you sure?' } %>
-              </div>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-  </div>
-  <div class="col col-6 shadow-lg p-3 mb-5 bg-white rounded">
-    <table class="table table-sm bg-light">
-      <thead>
-        <tr>
-          <th>Сервер</th>
-          <th>Команда</th>
-          <th>Статус</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @services.each do |service| %>
-          <tr>
-            <td><%= service.name %></td>
-            <td>
-              <div class="btn-group" role="group">
-                <%= link_to "Start", start_service_path(service), class: "btn btn-dark btn-sm", style: "background-color: #8B008B;"%>
-                <%= link_to "Stop", stop_service_path(service), class: "btn btn-warning btn-sm text-white" , style: "background-color: #FF8C00;" , data: { confirm: 'Are you really want stop service?' } %>
-                <%= link_to "Restart", stop_service_path(service), class: "btn btn-danger btn-sm" , data: { confirm: 'Are you really want stop service?' } %>
-              </div>
-            </td>
-            <td>
-              <%= service.status %>
-            </td>
-            <td>
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <%= link_to 'Show', service, class: "btn btn-outline-warning btn-sm" %>
-                <%= link_to 'Edit', edit_service_path(service), class: "btn btn-outline-warning btn-sm"%>
-                <%= link_to 'Drop', service, method: :delete, class: "btn btn-outline-warning btn-sm", data: { confirm: 'Are you sure?' } %>
-              </div>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-  </div>
-
+<div class="row justify-content-around mt-2" >
+  <% groups = @services.map {|service| service.group_id }.uniq %>
+  <% groups.each do |group_id| %>
+    <span class="col col-6 shadow-lg p-2 mb-2 bg-white rounded align-self-start">
+    <% services = @services.map {|service| service if service.group_id == group_id }.compact %>
+    <h6 align=center class="card-header"><%= services[0].group.name %></h6>
+    <%= render 'index', services: services %>
+    </span>
+  <% end %>
 </div>
