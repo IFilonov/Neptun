@@ -46,13 +46,15 @@ class ServicesController < ApplicationController
   end
 
   def start
-    answer = send_command(@service.start)
-    redirect_to services_path(:anchor => "wall"), notice: answer
+    @answer = send_command(@service.start)
   end
 
   def stop
-    answer = send_command(@service.stop)
-    redirect_to services_path(:anchor => "wall"), notice: answer
+    @answer = send_command(@service.stop)
+  end
+
+  def stop
+    @answer = send_command(@service.restart)
   end
 
   private
@@ -61,7 +63,7 @@ class ServicesController < ApplicationController
     end
 
     def service_params
-      params.require(:service).permit(:name, :path, :group_id, :start, :stop, :server_id, :status)
+      params.require(:service).permit(:name, :path, :group_id, :start, :stop, :restart, :server_id, :status)
     end
 
     def send_command(cmd)
@@ -69,6 +71,6 @@ class ServicesController < ApplicationController
       ssh.send_command(@service.path) if @service.path.length > 0
       answer = ssh.send_command(cmd)
       ssh.close
-      answer.byteslice(0, 2000)
+      answer.byteslice(0, 2000).split(/\n/).join('\n')
     end
 end

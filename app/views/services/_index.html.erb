@@ -14,9 +14,9 @@
         <td><%= service.name %></td>
         <td>
           <div class="btn-group" role="group">
-            <%= link_to "Start", start_service_path(service), class: "btn btn-dark btn-sm", style: "background-color: #8B008B;"%>
-            <%= link_to "Stop", stop_service_path(service), class: "btn btn-warning btn-sm text-white" , style: "background-color: #FF8C00;" , data: { confirm: 'Are you really want stop service?' } %>
-            <%= link_to "Restart", stop_service_path(service), class: "btn btn-danger btn-sm" , data: { confirm: 'Are you really want stop service?' } %>
+            <%= link_to "Start", start_service_path(service), remote: true, class: "btn btn-dark btn-sm", style: "background-color: #8B008B;"%>
+            <%= link_to "Stop", stop_service_path(service), remote: true, class: "btn btn-warning btn-sm text-white" , style: "background-color: #FF8C00;" , data: { confirm: 'Are you really want stop service?' } %>
+            <%= link_to "Restart", stop_service_path(service), remote: true, class: "btn btn-danger btn-sm" , data: { confirm: 'Are you really want stop service?' } %>
           </div>
         </td>
         <td>

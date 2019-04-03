@@ -1,51 +1,24 @@
 <%= form_with(model: service, local: true) do |form| %>
-
   <table class="table">
     <td>
-      <div class="text-white">
-        <%= form.label :name %>
-      </div>
-      <div class="text-white">
-        <%= form.label :path %>
-      </div>
-      <div class="text-white">
-        <%= form.label :group %>
-      </div>
-      <div class="text-white">
-        <%= form.label :start %>
-      </div>
-      <div class="text-white">
-        <%= form.label :stop %>
-      </div>
-      <div class="text-white">
-        <%= form.label :server_id %>
-      </div>
-      <div class="text-white">
-        <%= form.label :status %>
-      </div>
+      <%= form.label :name, class: "text-white" %>
+      <%= form.label :path, class: "text-white" %>
+      <%= form.label :group, class: "text-white" %>
+      <%= form.label :start, class: "text-white" %>
+      <%= form.label :stop, class: "text-white" %>
+      <%= form.label :restart, class: "text-white" %>
+      <%= form.label :server_id, class: "text-white" %>
+      <%= form.label :status, class: "text-white" %>
     </td>
     <td>
-      <div class="text-white">
-        <%= form.text_field :name %>
-      </div>
-      <div class="text-white">
-        <%= form.text_field :path %>
-      </div>
-      <div>
-        <%= form.collection_select :group_id, Group.all, :id, :name, prompt: true %>
-      </div>
-        <div class="text-white">
-        <%= form.text_field :start %>
-      </div>
-      <div class="text-white">
-        <%= form.text_field :stop %>
-      </div>
-      <div>
-        <%= form.collection_select :server_id, Server.all, :id, :host_name, prompt: true %>
-      </div>
-      <div class="text-white">
-        <%= form.number_field :status %>
-      </div>
+      <%= form.text_field :name %>
+      <%= form.text_field :path %>
+      <%= form.collection_select :group_id, Group.all, :id, :name, prompt: true %>
+      <%= form.text_field :start %>
+      <%= form.text_field :stop %>
+      <%= form.text_field :restart %>
+      <%= form.collection_select :server_id, Server.all, :id, :host_name, prompt: true %>
+      <%= form.number_field :status %>
     </td>
   </table>
   <div class="actions">
