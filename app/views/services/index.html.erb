@@ -1,4 +1,8 @@
-<div class="row mt-2" >
+<div class="row mt-2" style="padding-top:50px">
+  <textarea class="form-control ssh-answer" rows="3" style="font-size: 10pt">
+  </textarea>
+  <textarea class="form-control ssh-command" rows="1" style="font-size: 11pt;max-height: 28pt;">
+  </textarea>
   <% groups = @services.map {|service| service.group_id }.uniq %>
   <% groups.each do |group_id| %>
     <span class="col col-6 shadow-lg p-2 mb-2 bg-white rounded align-self-start">

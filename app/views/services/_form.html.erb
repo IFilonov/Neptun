@@ -1,25 +1,41 @@
 <%= form_with(model: service, local: true) do |form| %>
-  <table class="table">
-    <td>
-      <%= form.label :name, class: "text-white" %>
-      <%= form.label :path, class: "text-white" %>
-      <%= form.label :group, class: "text-white" %>
-      <%= form.label :start, class: "text-white" %>
-      <%= form.label :stop, class: "text-white" %>
-      <%= form.label :restart, class: "text-white" %>
-      <%= form.label :server_id, class: "text-white" %>
-      <%= form.label :status, class: "text-white" %>
-    </td>
-    <td>
-      <%= form.text_field :name %>
-      <%= form.text_field :path %>
-      <%= form.collection_select :group_id, Group.all, :id, :name, prompt: true %>
-      <%= form.text_field :start %>
-      <%= form.text_field :stop %>
-      <%= form.text_field :restart %>
-      <%= form.collection_select :server_id, Server.all, :id, :host_name, prompt: true %>
-      <%= form.number_field :status %>
-    </td>
+  <table class="table-sm">
+    <tr>
+      <td><%= form.label :name, class: "text-white" %></td>
+      <td><%= form.text_field :name, size: 30 %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :path, class: "text-white" %></td>
+      <td><%= form.text_field :path, size: 30 %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :sudo_name, class: "text-white" %></td>
+      <td><%= form.text_field :sudo_name, size: 30 %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :group, class: "text-white" %></td>
+      <td><%= form.collection_select :group_id, Group.all, :id, :name, prompt: true %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :start, class: "text-white" %></td>
+      <td><%= form.text_field :start, size: 30 %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :stop, class: "text-white" %></td>
+      <td><%= form.text_field :stop, size: 30 %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :restart, class: "text-white" %></td>
+      <td><%= form.text_field :restart, size: 30 %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :server_id, class: "text-white" %></td>
+      <td><%= form.collection_select :server_id, Server.all, :id, :host_name, prompt: true %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :status, class: "text-white" %></td>
+      <td><%= form.number_field :status, size: 30 %></td>
+    </tr>
   </table>
   <div class="actions">
     <%= form.submit %>

@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_04_03_183003) do
     t.datetime "updated_at", null: false
     t.integer "group_id"
     t.string "restart"
+    t.string "sudo_name"
     t.index ["group_id"], name: "index_services_on_group_id"
     t.index ["server_id"], name: "index_services_on_server_id"
   end
