@@ -11,12 +11,26 @@ ru:
         header: "Пользователи"
         back: "Назад"
         are_you_sure: "Вы уверены?"
+        back: "Назад"
+  groups:
+    new:
+      new_group: "Новая группа"
+      back: "Назад"
   servers:
     index:
       servers: "Список серверов"
       edit: "Изменить"
       destroy: "Удалить"
       new_server: "Создать"
+      back: "Назад"
     new:
       new_server: "Новый сервер"
-      back: "Назад"  
+      back: "Назад"
+  services:
+    index:
+    new:
+      back: "Назад"
+      new_server: "Новый сервис"
+      submit: "Создать сервис"
+    edit:
+      back: "Назад"
