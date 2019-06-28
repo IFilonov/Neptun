@@ -16,6 +16,12 @@ ru:
     new:
       new_group: "Новая группа"
       back: "Назад"
+    index:
+      new_group: "Новая группа"
+      back: "Назад"
+    edit:
+      update_group: "Редактировать группу"
+      back: "Назад"
   servers:
     index:
       servers: "Список серверов"
@@ -34,3 +40,4 @@ ru:
       submit: "Создать сервис"
     edit:
       back: "Назад"
+      edit_service: "Редактировать сервис"

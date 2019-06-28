@@ -10,17 +10,17 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :host_name %>
-    <%= form.text_field :host_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ip %>
-    <%= form.text_field :ip %>
-  </div>
-
+  <table class="table-sm w-100">
+    <tr>
+      <td class="w-0"><%= form.label :Hostname, class: "text-white" %></td>
+      <td class="w-100"><%= form.text_field :host_name, class: "w-100" %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :ip, class: "text-white" %></td>
+      <td><%= form.text_field :ip, class: "w-100" %></td>
+    </tr>
+  </table>
+  </br>
   <div class="actions" >
     <%= form.submit %>
   </div>
