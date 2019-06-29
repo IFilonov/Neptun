@@ -1,9 +1,9 @@
-<table class="table-sm">
+<table class="table-sm text-white">
   <thead>
     <tr>
-      <th class="text-white">Имя группы</th>
-      <th class="text-white">Позиция</th>
-      <th class="text-white">Колонка слева</th>
+      <th>Имя группы</th>
+      <th>Позиция</th>
+      <th>Колонка слева</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -11,9 +11,9 @@
   <tbody>
     <% groups.each do |group| %>
       <tr>
-        <td class="text-white"><%= group.name %></td>
-        <td class="text-white"><%= group.position %></td>
-        <td class="text-white"><%= group.align_left %></td>
+        <td><%= group.name %></td>
+        <td><%= group.position %></td>
+        <td><%= group.align_left %></td>
         <td><%= link_to t('.edit'), edit_group_path(group), class: "btn btn-light" %></td>
         <td><%= link_to t('.destroy'), group, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-light" %></td>
       </tr>

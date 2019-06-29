@@ -1,12 +1,10 @@
-<div class="row justify-content-center mt-3" style="padding-top:50px">
-  <div class="col col-md-5">
-    <h2 align=center class="card-header"><%= t('.edit_service') %></h2>
-    <div class="card text-white mb-3" style="background-color: #8B008B;">
-      <div class="card-body">
-        <%= render 'form', service: @service %>
-        <br>
-        <%= link_to 'Back', services_path, class: "btn btn-light" %>
-      </div>
+<div class="col col-md-5">
+  <h2 align=center class="card-header"><%= t('.edit_service') %></h2>
+  <div class="card text-white nbc">
+    <div class="card-body">
+      <%= render 'form', service: @service %>
+      <br>
+      <%= link_to t('.back'), services_path, class: "btn btn-light" %>
     </div>
   </div>
 </div>

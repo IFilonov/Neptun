@@ -1,52 +1,41 @@
-<div class="row justify-content-center mt-3"  style="padding-top:50px">
-  <div class="col col-md-5">
-    <h2 align=center class="card-header"><%= @service.name %></h2>
-    <div class="card text-white mb-3" style="background-color: #8B008B;">
-      <div class="card-body">
-        <p class="card-text">
-          <strong>Path:</strong>
-          <%= @service.path %>
-        </p>
-
-        <p class="card-text">
-          <strong>Sudo name:</strong>
-          <%= @service.sudo_name %>
-        </p>
-
-        <p class="card-text">
-          <strong>Group:</strong>
-          <%= @service.group.name %>
-        </p>
-
-        <p class="card-text">
-          <strong>Start:</strong>
-          <%= @service.start %>
-        </p>
-
-        <p class="card-text">
-          <strong>Stop:</strong>
-          <%= @service.stop %>
-        </p>
-
-        <p class="card-text">
-          <strong>Restart:</strong>
-          <%= @service.restart %>
-        </p>
-
-        <p class="card-text">
-          <strong>Server:</strong>
-          <%= @service.server.host_name %>
-        </p>
-
-        <p class="card-text">
-          <strong>Status:</strong>
-          <%= @service.status %>
-        </p>
-
-        <%= link_to 'Edit', edit_service_path(@service), class: "btn btn-light" %>
-
-        <%= link_to 'Back', services_path, class: "btn btn-light" %>
-      </div>
+<div class="col col-md-5">
+  <h2 align=center class="card-header"><%= @service.name %></h2>
+  <div class="card text-white mb-3 nbc">
+    <div class="card-body card-text">
+      <p>
+        <strong>Path:</strong>
+        <%= @service.path %>
+      </p>
+      <p>
+        <strong>Sudo name:</strong>
+        <%= @service.sudo_name %>
+      </p>
+      <p>
+        <strong>Group:</strong>
+        <%= @service.group.name %>
+      </p>
+      <p>
+        <strong>Start:</strong>
+        <%= @service.start %>
+      </p>
+      <p>
+        <strong>Stop:</strong>
+        <%= @service.stop %>
+      </p>
+      <p>
+        <strong>Restart:</strong>
+        <%= @service.restart %>
+      </p>
+      <p>
+        <strong>Server:</strong>
+        <%= @service.server.host_name %>
+      </p>
+      <p>
+        <strong>Status:</strong>
+        <%= @service.status %>
+      </p>
+      <%= link_to t('.edit'), edit_service_path(@service), class: "btn btn-light" %>
+      <%= link_to t('.back'), services_path, class: "btn btn-light" %>
     </div>
   </div>
 </div>

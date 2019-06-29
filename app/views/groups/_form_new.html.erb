@@ -11,21 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :position %>
-    <%= form.number_field :position %>
-  </div>
-
-  <div class="field">
-    <%= form.label :align_left %>
-    <%= form.text_field :align_left %>
-  </div>
-
+  <table class="table-sm w-100">
+    <tr>
+      <td class="w-0"><%= form.label :name, class: "text-white" %></td>
+      <td class="w-100"><%= form.text_field :name, class: "w-100" %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :position, class: "text-white" %></td>
+      <td><%= form.number_field :position, class: "w-100" %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :alignleft, class: "text-white" %></td>
+      <td><%= form.text_field :align_left, class: "w-100" %></td>
+    </tr>
+  </table>
   <div class="actions" >
     <br>
     <%= form.submit %>

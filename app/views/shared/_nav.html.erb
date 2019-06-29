@@ -1,17 +1,19 @@
-<nav class="navbar navbar-dark fixed-top" style="background-color: #8B008B;">
+<nav class="navbar navbar-dark fixed-top nbc">
   <%= link_to t('.neptun'), root_path, class: 'navbar-brand' %>
   <div class="spinner-grow text-light" role="status">
   </div>
   <% if user_signed_in? %>
-    <%= link_to 'Новый сервис', new_service_path, class: 'navbar-brand' %>
+    <%= link_to t('.new_service'), new_service_path, class: 'navbar-brand' %>
     <div class="nav-item dropdown">
       <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Справочники
+        <%= t('.dictionaries') %>
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <%= link_to 'Серверы', servers_path, class: 'dropdown-item' %>
+        <%= link_to t('.servers'), servers_path, class: 'dropdown-item' %>
         <div class="dropdown-divider"></div>
-        <%= link_to 'Группы', groups_path, class: 'dropdown-item' %>
+        <%= link_to t('.groups'), groups_path, class: 'dropdown-item' %>
+        <div class="dropdown-divider"></div>
+        <%= link_to t('.users'), admin_users_path, class: 'dropdown-item' %>
       </div>
     </div>
   <% end %>

@@ -1,24 +1,22 @@
-<div class="row justify-content-center mt-3">
-  <div class="col col-md-5">
-    <h2 align=center class="card-header"><%= @group.name %></h2>
-    <div class="card text-white mb-3" style="background-color: #8B008B;">
-      <div class="card-body">
-        <p class="card-text">
-          <strong>Path:</strong>
-          <%= @group.name %>
-        </p>
-        <p class="card-text">
-          <strong>Position:</strong>
-          <%= @group.position %>
-        </p>
-        <p class="card-text">
-          <strong>Align:</strong>
-          <%= @group.align_left %>
-        </p>
-        <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-light" %>
+<div class="col col-md-5">
+  <h2 align=center class="card-header"><%= @group.name %></h2>
+  <div class="card text-white mb-3 nbc">
+    <div class="card-body">
+      <p class="card-text">
+        <strong>Path:</strong>
+        <%= @group.name %>
+      </p>
+      <p class="card-text">
+        <strong>Position:</strong>
+        <%= @group.position %>
+      </p>
+      <p class="card-text">
+        <strong>Align:</strong>
+        <%= @group.align_left %>
+      </p>
+      <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-light" %>
 
-        <%= link_to 'Back', groups_path, class: "btn btn-light" %>
-      </div>
+      <%= link_to t('.back'), groups_path, class: "btn btn-light" %>
     </div>
   </div>
 </div>

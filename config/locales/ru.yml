@@ -5,18 +5,52 @@ ru:
       log_out: "Выход"
       welcome: "Добро пожаловать"
       sign_up: "Регистрация"
+      servers: "Серверы"
+      groups: "Группы"
+      users: "Пользователи"
+      dictionaries: "Справочники"
+      new_service: "Новый сервис"
   admin:
     users:
       index:
         header: "Пользователи"
         back: "Назад"
         are_you_sure: "Вы уверены?"
+        back: "Назад"
+        edit: "Редактировать"
+        destroy: "Удалить"
+  groups:
+    new:
+      new_group: "Новая группа"
+      back: "Назад"
+    index:
+      new_group: "Новая группа"
+      back: "Назад"
+    edit:
+      update_group: "Редактировать группу"
+      back: "Назад"
   servers:
     index:
       servers: "Список серверов"
       edit: "Изменить"
       destroy: "Удалить"
       new_server: "Создать"
+      back: "Назад"
     new:
       new_server: "Новый сервер"
-      back: "Назад"  
+      back: "Назад"
+    edit:
+      back: "Назад"
+      edit_server: "Редактировать сервер"
+  services:
+    index:
+    new:
+      back: "Назад"
+      new_server: "Новый сервис"
+      submit: "Создать сервис"
+    edit:
+      back: "Назад"
+      edit_service: "Редактировать сервис"
+    show:
+      back: "Назад"
+      edit: "Редактировать"
