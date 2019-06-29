@@ -5,6 +5,11 @@ ru:
       log_out: "Выход"
       welcome: "Добро пожаловать"
       sign_up: "Регистрация"
+      servers: "Серверы"
+      groups: "Группы"
+      users: "Пользователи"
+      dictionaries: "Справочники"
+      new_service: "Новый сервис"
   admin:
     users:
       index:
