@@ -39,6 +39,9 @@ ru:
     new:
       new_server: "Новый сервер"
       back: "Назад"
+    edit:
+      back: "Назад"
+      edit_server: "Редактировать сервер"
   services:
     index:
     new:
@@ -48,3 +51,6 @@ ru:
     edit:
       back: "Назад"
       edit_service: "Редактировать сервис"
+    show:
+      back: "Назад"
+      edit: "Редактировать"

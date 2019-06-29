@@ -1,49 +1,40 @@
 <div class="col col-md-5">
   <h2 align=center class="card-header"><%= @service.name %></h2>
   <div class="card text-white mb-3 nbc">
-    <div class="card-body">
-      <p class="card-text">
+    <div class="card-body card-text">
+      <p>
         <strong>Path:</strong>
         <%= @service.path %>
       </p>
-
-      <p class="card-text">
+      <p>
         <strong>Sudo name:</strong>
         <%= @service.sudo_name %>
       </p>
-
-      <p class="card-text">
+      <p>
         <strong>Group:</strong>
         <%= @service.group.name %>
       </p>
-
-      <p class="card-text">
+      <p>
         <strong>Start:</strong>
         <%= @service.start %>
       </p>
-
-      <p class="card-text">
+      <p>
         <strong>Stop:</strong>
         <%= @service.stop %>
       </p>
-
-      <p class="card-text">
+      <p>
         <strong>Restart:</strong>
         <%= @service.restart %>
       </p>
-
-      <p class="card-text">
+      <p>
         <strong>Server:</strong>
         <%= @service.server.host_name %>
       </p>
-
-      <p class="card-text">
+      <p>
         <strong>Status:</strong>
         <%= @service.status %>
       </p>
-
-      <%= link_to 'Edit', edit_service_path(@service), class: "btn btn-light" %>
-
+      <%= link_to t('.edit'), edit_service_path(@service), class: "btn btn-light" %>
       <%= link_to t('.back'), services_path, class: "btn btn-light" %>
     </div>
   </div>
