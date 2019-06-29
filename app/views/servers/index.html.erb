@@ -1,32 +1,30 @@
-<div class="row justify-content-center mt-3" style="padding-top:50px">
-  <div class="col col-md-5">
-    <h2 align=center class="card-header"><%= t('.servers') %></h2>
-    <div class="card text-white mb-3 nbc">
-      <div class="card-body">
-        <table class="table-sm">
-          <thead>
+<div class="col col-md-5">
+  <h2 align=center class="card-header"><%= t('.servers') %></h2>
+  <div class="card text-white mb-3 nbc">
+    <div class="card-body">
+      <table class="table-sm">
+        <thead>
+          <tr>
+            <th class="text-white">Host name</th>
+            <th class="text-white">Ip</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @servers.each do |server| %>
             <tr>
-              <th class="text-white">Host name</th>
-              <th class="text-white">Ip</th>
-              <th colspan="2"></th>
+              <td class="text-white"><%= server.host_name %></td>
+              <td class="text-white"><%= server.ip %></td>
+              <td><%= link_to t('.edit'), edit_server_path(server), class: "btn btn-light" %></td>
+              <td><%= link_to t('.destroy'), server, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-light" %></td>
             </tr>
-          </thead>
+          <% end %>
+        </tbody>
+      </table>
 
-          <tbody>
-            <% @servers.each do |server| %>
-              <tr>
-                <td class="text-white"><%= server.host_name %></td>
-                <td class="text-white"><%= server.ip %></td>
-                <td><%= link_to t('.edit'), edit_server_path(server), class: "btn btn-light" %></td>
-                <td><%= link_to t('.destroy'), server, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-light" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-
-        <%= link_to t('.new_server'), new_server_path, class: "btn btn-light"%>
-        <%= link_to t('.back'), :back, class: "btn btn-light" %>
-      </div>
+      <%= link_to t('.new_server'), new_server_path, class: "btn btn-light"%>
+      <%= link_to t('.back'), :back, class: "btn btn-light" %>
     </div>
   </div>
 </div>

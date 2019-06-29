@@ -1,15 +1,13 @@
-<div class="row justify-content-center mt-3" style="padding-top:50px">
-  <div class="col col-md-5">
-    <h2 align=center class="card-header">Группы</h2>
-    <div class="card text-white mb-3 nbc">
-      <div class="card-body">
-        <%= render 'form', groups: @groups %>
-        <br>
-        <%= link_to t('.new_group'), new_group_path, class: "btn btn-light" %>
-        <br>
-        <br>
-        <%= link_to t('.back'), :back, class: "btn btn-light" %>
-      </div>
+<div class="col col-md-5">
+  <h2 align=center class="card-header">Группы</h2>
+  <div class="card text-white mb-3 nbc">
+    <div class="card-body">
+      <%= render 'form', groups: @groups %>
+      <br>
+      <%= link_to t('.new_group'), new_group_path, class: "btn btn-light" %>
+      <br>
+      <br>
+      <%= link_to t('.back'), :back, class: "btn btn-light" %>
     </div>
   </div>
 </div>

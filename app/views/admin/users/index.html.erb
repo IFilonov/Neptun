@@ -1,6 +1,5 @@
-<div class="row justify-content-center mt-3" style="padding-top:50px">
   <div class="col col-md-6 ">
-    <h4><%= t('.header') %></h4>
+    <h2 align=center class="card-header"><%= t('.header') %></h2>
     <p id="notice"><%= notice %></p>
 
     <table class="table table-sm">
@@ -14,7 +13,7 @@
           <th>created_at</th>
           <th>ldap_login</th>
           <th>ldap_password</th>
-          <th colspan="1"></th>
+          <th colspan="2"></th>
         </tr>
       </thead>
       <tbody>
@@ -26,13 +25,20 @@
             <td><%= user.last_sign_in_at %></td>
             <td><%= user.last_sign_in_ip %></td>
             <td><%= user.created_at %></td>
-            <td><%= user.ldap_login %></td>
-            <td><%= user.ldap_password %></td>
-            <td><%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% if user == current_user %>
+              <td><%= user.ldap_login %></td>
+              <td><%= user.ldap_password %></td>
+              <td><%= link_to t('.edit'), edit_admin_user_path(user)%></td>
+              <td><%= link_to t('.destroy'), admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% else %>
+              <td><%= "*******" %></td>
+              <td><%= "*******" %></td>
+              <td><%= link_to "----", '#' %></td>
+              <td><%= link_to "----", '#' %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
     </table>
     <%= link_to t('.back'), :back %>
   </div>
-</div>

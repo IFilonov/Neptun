@@ -17,6 +17,8 @@ ru:
         back: "Назад"
         are_you_sure: "Вы уверены?"
         back: "Назад"
+        edit: "Редактировать"
+        destroy: "Удалить"
   groups:
     new:
       new_group: "Новая группа"
