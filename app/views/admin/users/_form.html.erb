@@ -1,0 +1,15 @@
+<%= form_with(model: [:admin, user], local: true) do |form| %>
+  <table class="table-sm w-100">
+    <tr>
+      <td class="w-0"><%= form.label :ldaplogin, class: "text-white" %></td>
+      <td class="w-100"><%= form.text_field :ldap_login, class: "w-100"  %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :ldappassword, class: "text-white" %></td>
+      <td><%= form.text_field :ldap_password, class: "w-100" %></td>
+    </tr>
+  </table>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
