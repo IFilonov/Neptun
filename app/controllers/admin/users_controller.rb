@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:destroy]
+  before_action :set_user, only: [:destroy, :edit, :update]
 
   def index
     @users = User.all
@@ -22,6 +22,16 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to admin_users_path, notice: 'User was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
   private
 
   def set_user
@@ -30,6 +40,6 @@ class Admin::UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:id)
+    params.require(:user).permit(:id, :ldap_login, :ldap_password)
   end
 end
