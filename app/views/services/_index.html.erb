@@ -8,24 +8,24 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="nbc-font">
     <% services.each do |service| %>
-      <tr>
+      <tr class="nbc-tr">
         <td><%= service.name %></td>
         <td>
-          <div class="btn-group" role="group">
+          <div class="btn-group nbc-bs" role="group">
             <% btn_disabled = "" %>
             <% btn_disabled = " disabled" if service.start.empty? %>
             <%= link_to "Start", start_service_path(service), remote: true,
-              class: "btn btn-dark btn-sm" + btn_disabled, style: "background-color: #8B008B;" %>
+              class: "btn btn-dark btn-sm nbc-bs" + btn_disabled, style: "background-color: #8B008B;" %>
             <% btn_disabled = "" %>
             <% btn_disabled = " disabled" if service.stop.empty? %>
             <%= link_to "Stop", stop_service_path(service), remote: true,
-              class: "btn btn-warning btn-sm text-white" + btn_disabled, style: "background-color: #FF8C00;" , data: { confirm: 'Are you really want stop service?' } %>
+              class: "btn btn-warning btn-sm text-white nbc-bs" + btn_disabled, style: "background-color: #FF8C00;" , data: { confirm: 'Are you really want stop service?' } %>
             <% btn_disabled = "" %>
             <% btn_disabled = " disabled" if service.restart.empty? %>
             <%= link_to "Restart", stop_service_path(service), remote: true,
-              class: "btn btn-danger btn-sm" + btn_disabled, data: { confirm: 'Are you really want stop service?' } %>
+              class: "btn btn-danger btn-sm nbc-bs" + btn_disabled, data: { confirm: 'Are you really want stop service?' } %>
           </div>
         </td>
         <td>
@@ -33,9 +33,9 @@
         </td>
         <td>
           <div class="btn-group" role="group">
-            <%= link_to 'Show', service, class: "btn btn-outline-warning btn-sm" %>
-            <%= link_to 'Edit', edit_service_path(service), class: "btn btn-outline-warning btn-sm"%>
-            <%= link_to 'Drop', service, method: :delete, class: "btn btn-outline-warning btn-sm", data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Show', service, class: "btn btn-outline-warning btn-sm nbc-bs" %>
+            <%= link_to 'Edit', edit_service_path(service), class: "btn btn-outline-warning btn-sm nbc-bs" %>
+            <%= link_to 'Drop', service, method: :delete, class: "btn btn-outline-warning btn-sm nbc-bs", data: { confirm: 'Are you sure?' } %>
           </div>
         </td>
       </tr>
