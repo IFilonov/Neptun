@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, path: :neptun, path_names: {sign_in: :login, sing_out: :logout}, controllers: { registrations: 'users/registrations' }
   resources :servers
   resources :groups
+  resources :scenarios
   resources :services do
     member do
       get :start
