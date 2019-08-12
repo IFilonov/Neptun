@@ -1,27 +1,25 @@
 class ScenariosController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_server, only: [:edit, :update, :destroy, :show]
+  before_action :set_scenario, only: [:edit, :update, :destroy]
 
   def index
-    @scenarios = Server.all
+    @scenarios = Scenario.all
+    @scenario = Scenario.new
   end
 
   def new
-    @server = Server.new
+
   end
 
   def edit
   end
 
-  def show
-  end
-
   def create
-    @server = Server.new(server_params)
+    @scenario = Scenario.new(server_params)
 
     respond_to do |format|
-      if @server.save
-        format.html { redirect_to @server, notice: 'Server was successfully created.' }
+      if @scenario.save
+        format.html { redirect_to @scenario, notice: 'Server was successfully created.' }
       else
         format.html { render :new }
       end
@@ -30,8 +28,8 @@ class ScenariosController < ApplicationController
 
   def update
     respond_to do |format|
-      if @server.update(server_params)
-        format.html { redirect_to @server, notice: 'Server was successfully updated.' }
+      if @scenario.update(server_params)
+        format.html { redirect_to @scenario, notice: 'Server was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -39,18 +37,18 @@ class ScenariosController < ApplicationController
   end
 
   def destroy
-    @server.destroy
+    @scenario.destroy
     respond_to do |format|
       format.html { redirect_to servers_url, notice: 'Server was successfully destroyed.' }
     end
   end
 
   private
-    def set_server
-      @server = Server.find(params[:id])
+    def set_scenario
+      @scenario = Server.find(params[:id])
     end
 
     def server_params
-      params.require(:server).permit(:host_name, :ip)
+      params.require(:scenario).permit(:name)
     end
 end
