@@ -15,13 +15,13 @@ class ScenariosController < ApplicationController
   end
 
   def create
-    @scenario = Scenario.new(server_params)
+    @scenario = Scenario.new(scenario_params)
 
     respond_to do |format|
       if @scenario.save
-        format.html { redirect_to @scenario, notice: 'Server was successfully created.' }
+        format.html { redirect_to scenarios_path, notice: 'Secnario was successfully created.' }
       else
-        format.html { render :new }
+        format.html { redirect_to scenarios_path, notice: 'Scenario was not successfully created.' }
       end
     end
   end
@@ -48,7 +48,7 @@ class ScenariosController < ApplicationController
       @scenario = Server.find(params[:id])
     end
 
-    def server_params
+    def scenario_params
       params.require(:scenario).permit(:name)
     end
 end
