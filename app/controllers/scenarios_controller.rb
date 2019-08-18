@@ -5,10 +5,10 @@ class ScenariosController < ApplicationController
   def index
     @scenarios = Scenario.all
     @scenario = Scenario.new
+    @services = Service.all
   end
 
   def new
-
   end
 
   def edit

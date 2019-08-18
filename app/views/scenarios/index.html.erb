@@ -20,20 +20,32 @@
         </div>
       </div>
       <br>
-      <%#= link_to t('.new_scenario'), new_server_path, class: "btn btn-light"%>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNewScenario">
         Создать новый сценарий
       </button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalBindServices">
+        Привязать сценарий с сервисами
+      </button>
       <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade" id="modalNewScenario" tabindex="-1" role="dialog" aria-labelledby="modalNewScenarioTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content nbc">
             <div class="modal-header">
-              <%= render 'form_new', group: @scenario %>
+              <%= render 'form_new', scenario: @scenario %>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modalBindServices" tabindex="-1" role="dialog" aria-labelledby="modalBindServicesTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content nbc">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <%= render 'bind_services', services: @services %>
           </div>
         </div>
       </div>
