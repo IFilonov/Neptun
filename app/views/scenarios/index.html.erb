@@ -20,12 +20,6 @@
         </div>
       </div>
       <br>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNewScenario">
-        Создать новый сценарий
-      </button>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalBindServices">
-        Привязать сценарий с сервисами
-      </button>
       <!-- Modal -->
       <div class="modal fade" id="modalNewScenario" tabindex="-1" role="dialog" aria-labelledby="modalNewScenarioTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -49,6 +43,13 @@
           </div>
         </div>
       </div>
+      <%= link_to t('.new_scenario'), new_scenario_path, class: "btn btn-light"%>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNewScenario">
+        Создать новый сценарий
+      </button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalBindServices">
+        Привязать сценарий с сервисами
+      </button>
       <%= link_to t('.back'), :back, class: "btn btn-light" %>
     </div>
   </div>

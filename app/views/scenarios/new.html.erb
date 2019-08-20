@@ -1,0 +1,24 @@
+<div class="col col-md-5">
+  <h2 align=center class="card-header"><%= t('.new_scenario') %></h2>
+  <div class="card text-white mb-3 nbc">
+    <div class="card-body">
+      <%= form_with(model: @scenario, local: true) do |form| %>
+        <table class="table-sm w-100">
+          <tr>
+            <td class="w-0"><%= form.label :name, class: "text-white" %></td>
+            <td class="w-100"><%= form.text_field :name, class: "w-100" %></td>
+          </tr>
+        </table>
+        <div class="actions" >
+          <br>
+          <%= form.submit %>
+        </div>
+        <br>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <% end %>
+
+      <br>
+      <%= link_to t('.back'), scenarios_path, class: "btn btn-light" %>
+    </div>
+  </div>
+</div>

@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_08_12_184108) do
     t.datetime "updated_at", null: false
     t.integer "scenarios_id"
     t.integer "services_id"
+    t.integer "order"
   end
 
   create_table "scenarios", force: :cascade do |t|
