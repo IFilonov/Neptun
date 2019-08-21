@@ -2,22 +2,26 @@
   <h2 align=center class="card-header"><%= t('.new_scenario') %></h2>
   <div class="card text-white mb-3 nbc">
     <div class="card-body">
-      <%= form_with(model: @scenario, local: true) do |form| %>
+      <%= form_with(model: @scenario, local: true) do |f| %>
         <table class="table-sm w-100">
           <tr>
-            <td class="w-0"><%= form.label :name, class: "text-white" %></td>
-            <td class="w-100"><%= form.text_field :name, class: "w-100" %></td>
+            <td class="w-0"><%= f.label :name, class: "text-white" %></td>
+            <td class="w-100"><%= f.text_field :name, class: "w-100" %></td>
+            <td>
+              <%= f.fields_for :scenario_services do |service| %>
+                <%= check_box_tag(:service) %>
+                <%= label_tag(:service, "asdfasdf") %>
+              <% end %>
+            </td>
           </tr>
         </table>
         <div class="actions" >
           <br>
-          <%= form.submit %>
+          <%= f.submit %>
         </div>
         <br>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       <% end %>
-
-      <br>
       <%= link_to t('.back'), scenarios_path, class: "btn btn-light" %>
     </div>
   </div>

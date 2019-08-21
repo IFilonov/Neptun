@@ -1,4 +1,5 @@
 class Scenario < ApplicationRecord
+  has_many :scenario_services
   has_many :services, :through => :scenario_services
 
   validates :name, presence: true

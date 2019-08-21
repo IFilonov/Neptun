@@ -9,6 +9,7 @@ class ScenariosController < ApplicationController
   end
 
   def new
+    @scenario = Scenario.new
   end
 
   def edit

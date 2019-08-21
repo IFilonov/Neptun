@@ -1,6 +1,9 @@
 class Service < ApplicationRecord
   belongs_to :server
   belongs_to :group
+  has_many :scenario_services
+  has_many :scenarios, through: :scenario_services
+
 
   validates :name, presence: true
   validates :name, uniqueness: true
