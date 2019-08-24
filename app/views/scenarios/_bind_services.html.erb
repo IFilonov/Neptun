@@ -1,15 +1,12 @@
 <table class="table table-sm bg-light">
-  <% columns_default = services.size / Scenario::MAX_ROWS_IN_COLUMN + 1 %>
-  <% columns = columns_default > Scenario::MAX_COLUMNS ? Scenario::MAX_COLUMNS : columns_default %>
-  <% rows = services.size / columns + 1 %>
+  <% rows_and_columns = @scenario.rows_and_columns(services.size) %>
   <% row_counter = 0 %>
-  <% rows.times do %>
-    <td>
+  <% rows_and_columns[0].times do %>
+    <tr>
       <% index = row_counter %>
-      <td></td>
-      <% columns.times do %>
+      <% rows_and_columns[1].times do %>
         <% if services[index] %>
-          <td>
+          <td nowrap="nowrap">
             <div class="form-check">
               <% service_name = services[index].name %>
               <input class="form-check-input" type="checkbox" value="" id=<%= service_name %> />
@@ -19,9 +16,9 @@
             </div>
           </td>
           <td>
-            <input type="number" d=<%= "num_#{service_name}" %> min="1" max="9">
+            <input type="number" style="max-width: 40px" d=<%= "num_#{service_name}" %> min="1" max="99">
           </td>
-          <% index += rows %>
+          <% index += rows_and_columns[0] %>
         <% end %>
       <% end %>
       <% row_counter += 1 %>

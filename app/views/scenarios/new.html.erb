@@ -1,19 +1,27 @@
 <div class="col col-md-5">
-  <h2 align=center class="card-header"><%= t('.new_scenario') %></h2>
+  <h2 class="card-header" id="center"><%= t('.new_scenario') %></h2>
   <div class="card text-white mb-3 nbc">
     <div class="card-body">
       <%= form_with(model: @scenario, local: true) do |f| %>
         <table class="table-sm w-100">
           <tr>
-            <td class="w-0"><%= f.label :name, class: "text-white" %></td>
-            <td class="w-100"><%= f.text_field :name, class: "w-100" %></td>
-            <td>
-              <%= f.fields_for :scenario_services do |service| %>
-                <%= check_box_tag(:service) %>
-                <%= label_tag(:service, "asdfasdf") %>
-              <% end %>
-            </td>
+            <td><%= f.label :name, class: "text-white" %></td>
+            <td><%= f.text_field :name %></td>
           </tr>
+          <% Service.all.each do |service|  %>
+            <tr>
+              <td>
+                <%= f.fields_for :scenario_services do |p| %>
+                  <%= p.hidden_field(:service_id, :value => service.id ) %>
+                  <%= label(:service_name, service.name ) %>
+                  <%= p.number_field(:order, in: 1..20, ) %>
+                <% end %>
+              </td>
+              <td>
+
+              </td>
+            </tr>
+          <% end %>
         </table>
         <div class="actions" >
           <br>

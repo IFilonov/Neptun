@@ -10,6 +10,8 @@ class ScenariosController < ApplicationController
 
   def new
     @scenario = Scenario.new
+    @scenario.scenario_services.new
+    @services = Service.all
   end
 
   def edit
@@ -17,10 +19,10 @@ class ScenariosController < ApplicationController
 
   def create
     @scenario = Scenario.new(scenario_params)
-
+    @scenario.clean_unselected_services
     respond_to do |format|
       if @scenario.save
-        format.html { redirect_to scenarios_path, notice: 'Secnario was successfully created.' }
+        format.html { redirect_to scenarios_path, notice: 'Scenario was successfully created.' }
       else
         format.html { redirect_to scenarios_path, notice: 'Scenario was not successfully created.' }
       end
@@ -50,6 +52,6 @@ class ScenariosController < ApplicationController
     end
 
     def scenario_params
-      params.require(:scenario).permit(:name)
+      params.require(:scenario).permit(:name, scenario_services_attributes: [:service_id, :order])
     end
 end
