@@ -55,3 +55,15 @@ ru:
     show:
       back: "Назад"
       edit: "Редактировать"
+  scenarios:
+    new:
+      new_scenario: "Новый сценарий"
+      back: "Назад"
+    index:
+      scenarios: "Сценарии"
+      new_scenario: "Новый сценарий"
+      back: "Назад"
+      new_bind_services: "Создать сценарий с привязкой к сервисам"
+    bind_services:
+      back: "Имя сервиса"
+      new_scenario: "Новый сценарий"

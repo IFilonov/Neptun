@@ -18,4 +18,11 @@ class Scenario < ApplicationRecord
     columns = columns_default > MAX_COLUMNS ? MAX_COLUMNS : columns_default
     [elements_count / columns + 1, columns]
   end
+
+  def services_name
+    name = ""
+    scenario_services.sort_by { |ss| ss[:order] }.each { |item| name += "#{item.order}. #{item.service.name}; " }
+    name
+  end
+
 end

@@ -6,6 +6,7 @@ class ScenariosController < ApplicationController
     @scenarios = Scenario.all
     @scenario = Scenario.new
     @services = Service.all
+    @scenario.scenario_services.new
   end
 
   def new

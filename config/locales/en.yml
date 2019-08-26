@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  scenarios:
+    index:
+      new_bind_services: ""
