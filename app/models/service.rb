@@ -16,11 +16,9 @@ class Service < ApplicationRecord
     Service.joins(:group).distinct.pluck(:position).sort;
   end
 
-  def self.rows_and_columns
+  def self.service_columns
     size = Service.all.size
     columns_default = size / MAX_ROWS_IN_COLUMN + 1
-    columns = columns_default > MAX_COLUMNS ? MAX_COLUMNS : columns_default
-    rows = size / columns + 1
-    [rows, columns]
+    columns_default > MAX_COLUMNS ? MAX_COLUMNS : columns_default
   end
 end

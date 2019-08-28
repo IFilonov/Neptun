@@ -5,8 +5,8 @@
       <div class="row">
         <div class="col-4">
           <div class="list-group" id="list-tab" role="tablist">
-            <% @scenarios.each_with_index do |scenario, index| %>
-              <a class=<%= "list-group-item list-group-item-action #{ "active" if index==0 }" %>  id=<%= "#{scenario.id}-list" %> data-toggle="list"
+            <% @scenarios.each do |scenario| %>
+              <a class=<%= "list-group-item list-group-item-action" %>  id=<%= "#{scenario.id}-list" %> data-toggle="list"
                  href=<%= "#list-#{scenario.id}" %> >
                 <%= scenario.name %>
               </a>
@@ -15,9 +15,26 @@
         </div>
         <div class="col-8">
           <div class="tab-content" id="nav-tabContent">
-            <% @scenarios.each_with_index do |scenario, index|  %>
-              <div class=<%= "tab-pane fade #{ "show active" if index == 0 }" %>  id=<%= "list-#{scenario.id}" %> role="tabpanel" aria-labelledby=<%= "#{scenario.id}-list" %>>
-                <%=  scenario.services_name %>
+            <% @scenarios.each do |scenario|  %>
+              <div class=<%= "tab-pane fade" %>  id=<%= "list-#{scenario.id}" %> role="tabpanel" aria-labelledby=<%= "#{scenario.id}-list" %>>
+                <table class="table table-sm bg-light">
+                  <tbody class="nbc-font">
+                    <tr>
+                      <th><%=  t('.services') %></th>
+                      <th><%=  t('.commands') %></th>
+                    </tr>
+                    <tr>
+                      <td><%=  scenario.services_name %></td>
+                      <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=<%= "#modalBindServices#{scenario.id.to_s}" %>>
+                          <%= t('.edit_bind_services') %>
+                        </button>
+                        <%= render 'bind_services', scenario: scenario %>
+                      </td>
+                      <td><%= link_to t('.delete'), scenario, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             <% end %>
           </div>
@@ -25,15 +42,7 @@
       </div>
       <br>
       <!-- Modal -->
-      <div class="modal fade" id="modalBindServices" tabindex="-1" role="dialog" aria-labelledby="modalBindServicesTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-           <div class="modal-content card text-white mb-3 nbc">
-             <div class="card-body">
-               <%= render 'bind_services', services: @services %>
-             </div>
-          </div>
-        </div>
-      </div>
+      <%= render 'bind_services', scenario:@scenario %>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalBindServices">
         <%= t('.new_bind_services') %>
       </button>

@@ -64,6 +64,12 @@ ru:
       new_scenario: "Новый сценарий"
       back: "Назад"
       new_bind_services: "Создать сценарий с привязкой к сервисам"
+      services: "Сервисы в порядке запуска"
+      commands: "Действие"
+      delete: "Удалить"
+      edit: "Изменить"
+      edit_bind_services: "Изменить"
     bind_services:
       back: "Имя сервиса"
       new_scenario: "Новый сценарий"
+      close: "Закрыть"

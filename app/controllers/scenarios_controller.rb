@@ -6,7 +6,9 @@ class ScenariosController < ApplicationController
     @scenarios = Scenario.all
     @scenario = Scenario.new
     @services = Service.all
-    @scenario.scenario_services.new
+    @services.each do |s|
+      @scenario.scenario_services.build({ :service_id => s.id })
+      end
   end
 
   def new
@@ -20,7 +22,6 @@ class ScenariosController < ApplicationController
 
   def create
     @scenario = Scenario.new(scenario_params)
-    @scenario.clean_unselected_services
     respond_to do |format|
       if @scenario.save
         format.html { redirect_to scenarios_path, notice: 'Scenario was successfully created.' }
@@ -32,10 +33,10 @@ class ScenariosController < ApplicationController
 
   def update
     respond_to do |format|
-      if @scenario.update(server_params)
-        format.html { redirect_to @scenario, notice: 'Server was successfully updated.' }
+      if @scenario.update(scenario_params)
+        format.html { redirect_to scenarios_path, notice: 'Scenario was successfully updated.' }
       else
-        format.html { render :edit }
+        format.html { redirect_to scenarios_path }
       end
     end
   end
@@ -43,16 +44,16 @@ class ScenariosController < ApplicationController
   def destroy
     @scenario.destroy
     respond_to do |format|
-      format.html { redirect_to servers_url, notice: 'Server was successfully destroyed.' }
+      format.html { redirect_to scenarios_url, notice: 'Scenario was successfully destroyed.' }
     end
   end
 
   private
     def set_scenario
-      @scenario = Server.find(params[:id])
+      @scenario = Scenario.find(params[:id])
     end
 
     def scenario_params
-      params.require(:scenario).permit(:name, scenario_services_attributes: [:service_id, :order])
+      params.require(:scenario).permit(:name, scenario_services_attributes: [:service_id, :order, :id])
     end
 end
