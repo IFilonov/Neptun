@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_03_183003) do
+ActiveRecord::Schema.define(version: 2019_08_12_182454) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -18,6 +18,23 @@ ActiveRecord::Schema.define(version: 2019_04_03_183003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position", default: 0, null: false
+  end
+
+  create_table "scenario_services", force: :cascade do |t|
+    t.integer "scenario_id"
+    t.integer "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "order"
+    t.index ["scenario_id"], name: "index_scenario_services_on_scenario_id"
+    t.index ["service_id"], name: "index_scenario_services_on_service_id"
+  end
+
+  create_table "scenarios", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "user_id"
   end
 
   create_table "servers", force: :cascade do |t|

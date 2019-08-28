@@ -1,0 +1,26 @@
+<%= form_with(model: scenario, local: true) do |form| %>
+  <% if scenario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(scenario.errors.count, "error") %> prohibited this server from being saved:</h2>
+
+      <ul>
+      <% scenario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="table-sm w-100">
+    <tr>
+      <td class="w-0"><%= form.label :name, class: "text-white" %></td>
+      <td class="w-100"><%= form.text_field :name, class: "w-100" %></td>
+    </tr>
+  </table>
+  <div class="actions" >
+    <br>
+    <%= form.submit %>
+  </div>
+  <br>
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<% end %>

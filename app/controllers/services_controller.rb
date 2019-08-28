@@ -4,6 +4,7 @@ class ServicesController < ApplicationController
 
   def index
     @services = Service.order(:group_id, :id)
+    @scenarios = Scenario.all
   end
 
   def show

@@ -7,6 +7,7 @@ ru:
       sign_up: "Регистрация"
       servers: "Серверы"
       groups: "Группы"
+      scenarios: "Сценарии"
       users: "Пользователи"
       dictionaries: "Справочники"
       new_service: "Новый сервис"
@@ -54,3 +55,21 @@ ru:
     show:
       back: "Назад"
       edit: "Редактировать"
+  scenarios:
+    new:
+      new_scenario: "Новый сценарий"
+      back: "Назад"
+    index:
+      scenarios: "Сценарии"
+      new_scenario: "Новый сценарий"
+      back: "Назад"
+      new_bind_services: "Создать сценарий с привязкой к сервисам"
+      services: "Сервисы в порядке запуска"
+      commands: "Действие"
+      delete: "Удалить"
+      edit: "Изменить"
+      edit_bind_services: "Изменить"
+    bind_services:
+      back: "Имя сервиса"
+      new_scenario: "Новый сценарий"
+      close: "Закрыть"
