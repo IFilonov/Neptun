@@ -3,9 +3,8 @@ class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy, :start, :stop, :restart]
 
   def index
-    @services = Service.ordered(current_user.ldap_login, current_user.ldap_password)
+    @services = Service.includes(:group).ordered(current_user.ldap_login, current_user.ldap_password)
     @scenarios = Scenario.all
-    @groups = Group.all
   end
 
   def show
