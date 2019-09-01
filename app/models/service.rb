@@ -43,11 +43,13 @@ class Service < ApplicationRecord
   private
 
   def send_command(cmd)
-    ssh = SshService.new(server.host_name, @@ldap_login, @@ldap_password);
-    ssh.send_command("sudo -u #{sudo_name} -i") if sudo_name&.length > 0
-    ssh.send_command(path) if path&.length > 0
-    answer = ssh.send_command(cmd)
-    ssh.close
-    answer.byteslice(0, 2000).split(/\n/).join('\n')
+    begin
+      ssh = SshService.new(server.host_name, @@ldap_login, @@ldap_password);
+      ssh.send_command("sudo -u #{sudo_name} -i") if sudo_name&.length > 0
+      ssh.send_command(path) if path&.length > 0
+      answer = ssh.send_command(cmd)
+      ssh.close
+      answer.byteslice(0, 2000).split(/\n/).join('\n')
+    end
   end
 end

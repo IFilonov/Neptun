@@ -5,6 +5,7 @@ class ServicesController < ApplicationController
   def index
     @services = Service.ordered(current_user.ldap_login, current_user.ldap_password)
     @scenarios = Scenario.all
+    @groups = Group.all
   end
 
   def show
