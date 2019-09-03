@@ -64,6 +64,6 @@ class ServicesController < ApplicationController
     end
 
     def service_params
-      params.require(:service).permit(:id, :name, :path, :sudo_name, :group_id, :start, :stop, :restart, :server_id, :status)
+      params.require(:service).permit(:id, :name, :path, :sudo_name, :group_id, :user_id, :state, :start, :stop, :restart, :server_id, :status)
     end
 end

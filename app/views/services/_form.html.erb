@@ -29,8 +29,16 @@
       <td><%= form.text_field :restart, class: "w-100" %></td>
     </tr>
     <tr>
+      <td><%= form.label :state, class: "text-white" %></td>
+      <td><%= form.text_field :state, class: "w-100" %></td>
+    </tr>
+    <tr>
       <td><%= form.label :server_id, class: "text-white" %></td>
       <td><%= form.collection_select :server_id, Server.all, :id, :host_name, prompt: true %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :user_id, class: "text-white" %></td>
+      <td><%= form.collection_select :user_id, User.all, :id, :ldap_login, prompt: true %></td>
     </tr>
     <tr>
       <td><%= form.label :status, class: "text-white" %></td>

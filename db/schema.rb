@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_12_182454) do
+ActiveRecord::Schema.define(version: 2019_09_02_170052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,8 +59,11 @@ ActiveRecord::Schema.define(version: 2019_08_12_182454) do
     t.bigint "group_id"
     t.string "restart"
     t.string "sudo_name"
+    t.string "state"
+    t.bigint "user_id"
     t.index ["group_id"], name: "index_services_on_group_id"
     t.index ["server_id"], name: "index_services_on_server_id"
+    t.index ["user_id"], name: "index_services_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,4 +94,5 @@ ActiveRecord::Schema.define(version: 2019_08_12_182454) do
   add_foreign_key "scenario_services", "services"
   add_foreign_key "services", "groups"
   add_foreign_key "services", "servers"
+  add_foreign_key "services", "users"
 end
