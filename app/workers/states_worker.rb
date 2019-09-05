@@ -1,26 +1,35 @@
 class StatesWorker
   include Sidekiq::Worker
+  sidekiq_options queue: :monitor
 
   def perform(duration)
+    ssh_connection_pool = []
+    services = Service.all.order(:id)
 
-    ssh_services = []
     loop do
-
-      sleep duration
-
-      Service.all.each do |s|
-        if s.user && s.state && s.user.ldap_login && s.user.ldap_password
+      puts "StatesWorker #{duration} sec processed!"
+      services.reload
+      services.each do |s|
+        status = s.status ? s.status : 0
+        if s&.user&.ldap_login && s.state
+          puts "Service #{s.name} processed!"
+          puts s.state
           begin
-          ssh_services[s.id] ||= SshService.new(s.server.host_name, s.user.ldap_login, s.user.ldap_password)
-          s.status = ssh_services[s.id].run_state
-          s.save!
-          rescue SocketError => error
-            s.status = ssh_services[s.id].run_state
-            end
+            ssh_connection_pool[s.id] ||= SshService.new(s.server.host_name,
+                                                s.user.ldap_login,
+                                                s.user.ldap_password)
+          status = s.do_state(ssh_services[s.id]).to_i
+            puts "State #{s.name} processed!"
+          rescue SocketError
+            status -= 1
           end
+          s.save! if status != s.status
         end
       end
 
+      sleep duration
+
     end
+    puts "Exit!"
   end
 end

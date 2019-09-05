@@ -47,15 +47,15 @@ class ServicesController < ApplicationController
   end
 
   def start
-    @answer = @service.run_start
+    @answer = @service.do_start
   end
 
   def stop
-    @answer = @service.run_stop
+    @answer = @service.do_stop
   end
 
   def restart
-    @answer = @service.run_restart
+    @answer = @service.do_restart
   end
 
   private
