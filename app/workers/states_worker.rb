@@ -18,7 +18,7 @@ class StatesWorker
             ssh_connection_pool[s.id] ||= SshService.new(s.server.host_name,
                                                 s.user.ldap_login,
                                                 s.user.ldap_password)
-          status = s.do_state(ssh_services[s.id]).to_i
+            status = s.do_state(ssh_services[s.id]).to_i
             puts "State #{s.name} processed!"
           rescue SocketError
             status -= 1
