@@ -1,9 +1,9 @@
 class ServicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_service, only: [:show, :edit, :update, :destroy, :start, :stop]
+  before_action :set_service, only: [:show, :edit, :update, :destroy, :start, :stop, :restart]
 
   def index
-    @services = Service.order(:group_id, :id)
+    @services = Service.includes(:group).ordered(current_user.ldap_login, current_user.ldap_password)
     @scenarios = Scenario.all
   end
 
@@ -47,15 +47,15 @@ class ServicesController < ApplicationController
   end
 
   def start
-    @answer = send_command(@service.start)
+    @answer = @service.do_start
   end
 
   def stop
-    @answer = send_command(@service.stop)
+    @answer = @service.do_stop
   end
 
-  def stop
-    @answer = send_command(@service.restart)
+  def restart
+    @answer = @service.do_restart
   end
 
   private
@@ -64,15 +64,6 @@ class ServicesController < ApplicationController
     end
 
     def service_params
-      params.require(:service).permit(:name, :path, :sudo_name, :group_id, :start, :stop, :restart, :server_id, :status)
-    end
-
-    def send_command(cmd)
-      ssh = SshService.new(@service.server.host_name, current_user.ldap_login, current_user.ldap_password);
-      ssh.send_command(@service.path) if @service&.path.length > 0
-      ssh.send_command("sudo -u #{@service.sudo_name} -i") if @service&.sudo_name.length > 0
-      answer = ssh.send_command(cmd)
-      ssh.close
-      answer.byteslice(0, 2000).split(/\n/).join('\n')
+      params.require(:service).permit(:id, :name, :path, :sudo_name, :group_id, :user_id, :state, :start, :stop, :restart, :server_id, :status)
     end
 end

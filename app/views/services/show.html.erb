@@ -7,7 +7,7 @@
         <%= @service.path %>
       </p>
       <p>
-        <strong>Sudo name:</strong>
+        <strong>Service sudoname:</strong>
         <%= @service.sudo_name %>
       </p>
       <p>
@@ -33,6 +33,14 @@
       <p>
         <strong>Status:</strong>
         <%= @service.status %>
+      </p>
+      <p>
+        <strong>State:</strong>
+        <%= @service.state %>
+      </p>
+      <p>
+        <strong>User:</strong>
+        <%= @service&.user&.ldap_login %>
       </p>
       <%= link_to t('.edit'), edit_service_path(@service), class: "btn btn-light" %>
       <%= link_to t('.back'), services_path, class: "btn btn-light" %>

@@ -15,7 +15,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 if Service.all.count == 0
   groups = Group.create([{ name: 'SERVER' }, { name: 'NODE' }, { name: 'ITEM' }, { name: 'HOST' }])
-  scenarios = Scenario.create([{ name: 'Плановые работы 1' }, { name: 'Плановые работы 2' }, { name: 'Плановые работы 3' }, { name: 'Плановые работы 4' }])
+  Scenario.create([{ name: 'Плановые работы 1' }, { name: 'Плановые работы 2' }, { name: 'Плановые работы 3' }, { name: 'Плановые работы 4' }])
   servers = Server.create([{ host_name: 'GROUP-1', ip: '10.179.10.1' },
                             { host_name: 'GROUP-2', ip: '10.179.10.2' },
                             { host_name: 'GROUP-3', ip: '10.179.10.3' },
@@ -30,6 +30,7 @@ if Service.all.count == 0
         status: 0,
         group_id: groups[group].id,
         restart: "restart",
+        state: "state",
         sudo_name: "sudo_name"
         }])
     end

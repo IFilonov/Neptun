@@ -9,11 +9,13 @@
     </label>
   <% end %>
 </div>
-<% groups = @services.map {|service| service.group_id }.uniq %>
-<% groups.each do |group_id| %>
+<% groups = @services.map { |service| service.group }.uniq %>
+<% groups.each do |group| %>
   <span class="col col-6 shadow-lg p-1 mb-1 bg-white rounded align-self-start">
-    <% services = @services.map {|service| service if service.group_id == group_id }.compact %>
-      <h6 id="center" class="card-header text-monospace" style="height:25px; padding-top:4px;"><%= services[0].group.name %></h6>
-    <%= render 'index', services: services %>
+    <% group_services = @services.map { |service| service if service.group == group }.compact %>
+    <h6 id="center" class="card-header text-monospace" style="height:25px; padding-top:4px;">
+      <%= group.name %>
+    </h6>
+    <%= render 'index', services: group_services %>
   </span>
 <% end %>

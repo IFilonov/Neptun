@@ -6,21 +6,20 @@
         <%= form_with(model: scenario, local: true) do |scenario_form| %>
           <%= scenario_form.label :name, t('.new_scenario'), class: "text-white" %>
           <%= scenario_form.text_field :name, style: "width: 50%"  %>
-          <% index = 0 %>
           <table class="table table-sm bg-light">
             <tbody class="nbc-font">
-              <%= scenario_form.fields_for :scenario_services do |scenario_service_fields| %>
-                <% index =  scenario_service_fields.index %>
+              <%= scenario_form.fields_for :scenario_services do |scenario_service_field| %>
+                <% index =  scenario_service_field.index %>
                 <% service =  scenario.scenario_services[index].service %>
                 <% if index % columns == 0 %>
                   <tr>
                 <% end %>
                 <td>
-                   <%= scenario_service_fields.hidden_field(:service_id, :value => service.id) %>
+                   <%= scenario_service_field.hidden_field(:service_id, :value => service.id) %>
                    <%= label(:service_name, service.name, class: "nbc-font" ) %>
                 </td>
                 <td>
-                   <%= scenario_service_fields.number_field(:order, in: 1..99, style: "max-width: 40px" ) %>
+                   <%= scenario_service_field.number_field(:order, in: 1..99, style: "max-width: 40px" ) %>
                 </td>
                 <% if (index + 1) % columns == 0 %>
                   </tr>

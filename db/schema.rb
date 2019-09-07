@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_12_182454) do
+ActiveRecord::Schema.define(version: 2019_09_02_170052) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "groups", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 2019_08_12_182454) do
   end
 
   create_table "scenario_services", force: :cascade do |t|
-    t.integer "scenario_id"
-    t.integer "service_id"
+    t.bigint "scenario_id"
+    t.bigint "service_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order"
@@ -49,15 +52,18 @@ ActiveRecord::Schema.define(version: 2019_08_12_182454) do
     t.string "path"
     t.string "start"
     t.string "stop"
-    t.integer "server_id"
+    t.bigint "server_id"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "group_id"
+    t.bigint "group_id"
     t.string "restart"
     t.string "sudo_name"
+    t.string "state"
+    t.bigint "user_id"
     t.index ["group_id"], name: "index_services_on_group_id"
     t.index ["server_id"], name: "index_services_on_server_id"
+    t.index ["user_id"], name: "index_services_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,4 +90,9 @@ ActiveRecord::Schema.define(version: 2019_08_12_182454) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "scenario_services", "scenarios"
+  add_foreign_key "scenario_services", "services"
+  add_foreign_key "services", "groups"
+  add_foreign_key "services", "servers"
+  add_foreign_key "services", "users"
 end

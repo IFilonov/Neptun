@@ -5,10 +5,9 @@ class ScenariosController < ApplicationController
   def index
     @scenarios = Scenario.all
     @scenario = Scenario.new
-    @services = Service.all
-    @services.each do |s|
+    Service.all.each do |s|
       @scenario.scenario_services.build({ :service_id => s.id })
-      end
+    end
   end
 
   def new

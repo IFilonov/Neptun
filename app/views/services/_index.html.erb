@@ -8,6 +8,7 @@
     </tr>
   </thead>
 
+  <% spinner = false %>
   <tbody class="nbc-font">
     <% services.each do |service| %>
       <tr class="nbc-tr">
@@ -29,7 +30,14 @@
           </div>
         </td>
         <td>
-          <%= service.status %>
+          <% if spinner %>
+            <div class="spinner-grow spinner-grow-sm nbc" role="status">
+          <% else %>
+            <div class="spinner-grow spinner-grow-sm nbc-orange" role="status">
+          <% end %>
+              <span class="sr-only">Loading...</span>
+            </div>
+          <% spinner = !spinner %>
         </td>
         <td>
           <div class="btn-group" role="group">

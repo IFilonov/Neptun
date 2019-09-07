@@ -8,4 +8,6 @@ class User < ApplicationRecord
          :validatable,
          :confirmable,
          :trackable
+
+  has_many :services
 end
