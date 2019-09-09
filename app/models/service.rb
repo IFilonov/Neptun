@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Service < ApplicationRecord
   belongs_to :server
   belongs_to :group
@@ -8,15 +10,15 @@ class Service < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: true
 
-  MAX_COLUMNS = 4.freeze
-  MAX_ROWS_IN_COLUMN = 20.freeze
+  MAX_COLUMNS = 4
+  MAX_ROWS_IN_COLUMN = 20
 
   def self.ordered
     Service.order(:group_id, :id)
   end
 
   def self.service_columns(size = nil)
-    size = size ? size : Service.all.size
+    size ||= Service.all.size
     columns_default = size / MAX_ROWS_IN_COLUMN + 1
     columns_default > MAX_COLUMNS ? MAX_COLUMNS : columns_default
   end
@@ -26,7 +28,7 @@ class Service < ApplicationRecord
   end
 
   def send_command(service_attribute_name, login, password, ssh = nil)
-    ssh = ssh ? ssh : SshService.new(server.host_name, login, password)
+    ssh ||= SshService.new(server.host_name, login, password)
     ssh.send_command_sudo(sudo_name)
     ssh.send_command(path)
     answer = ssh.send_command(read_attribute(service_attribute_name))

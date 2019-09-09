@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/ssh'
 
 class SshService
@@ -16,5 +18,4 @@ class SshService
   def close
     @ssh.close
   end
-
 end

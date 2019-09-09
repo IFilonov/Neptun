@@ -1,22 +1,22 @@
+# frozen_string_literal: true
+
 class ServicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_service, only: [:show, :edit, :update, :destroy, :start, :stop, :restart]
-  before_action :send_command, only: [:start, :stop, :restart]
+  before_action :set_service, only: %i[show edit update destroy start stop restart]
+  before_action :send_command, only: %i[start stop restart]
 
   def index
     @services = Service.includes(:group).ordered
     @scenarios = Scenario.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @service = Service.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @service = Service.new(service_params)
@@ -47,14 +47,11 @@ class ServicesController < ApplicationController
     end
   end
 
-  def start
-  end
+  def start; end
 
-  def stop
-  end
+  def stop; end
 
-  def restart
-  end
+  def restart; end
 
   private
 

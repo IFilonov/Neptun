@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Scenario < ApplicationRecord
   has_many :scenario_services, dependent: :destroy
-  has_many :services, :through => :scenario_services
+  has_many :services, through: :scenario_services
   accepts_nested_attributes_for :scenario_services
 
   validates :name, presence: true
