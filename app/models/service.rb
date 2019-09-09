@@ -11,18 +11,12 @@ class Service < ApplicationRecord
   MAX_COLUMNS = 4.freeze
   MAX_ROWS_IN_COLUMN = 20.freeze
 
-  scope :odd_groups, -> { Service.distinct.pluck(:group_id) }
-
   def self.ordered
     Service.order(:group_id, :id)
   end
 
-  def self.positions
-    Service.joins(:group).distinct.pluck(:position).sort;
-  end
-
-  def self.service_columns
-    size = Service.all.size
+  def self.service_columns(size = nil)
+    size = size ? size : Service.all.size
     columns_default = size / MAX_ROWS_IN_COLUMN + 1
     columns_default > MAX_COLUMNS ? MAX_COLUMNS : columns_default
   end

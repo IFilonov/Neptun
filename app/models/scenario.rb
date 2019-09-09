@@ -7,6 +7,6 @@ class Scenario < ApplicationRecord
   validates_associated :scenario_services
 
   def services_name
-    scenario_services.where.not(order: nil).sort_by { |sort| sort[:order] }.map { |ss| "#{ss.order}. #{ss.service.name}" }.join
+    scenario_services.where.not(order: nil).sort_by { |sort| sort[:order] }.map { |ss| "#{ss.order}. #{ss.service.name} " }.join
   end
 end
