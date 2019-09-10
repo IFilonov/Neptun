@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
 class ScenariosController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_scenario, only: [:edit, :update, :destroy]
+  before_action :set_scenario, only: %i[edit update destroy]
 
   def index
     @scenarios = Scenario.all
     @scenario = Scenario.new
-    Service.all.each do |s|
-      @scenario.scenario_services.build({ :service_id => s.id })
+    @services = Service.ordered
+    @services.each do |s|
+      @scenario.scenario_services.build(service_id: s.id)
     end
   end
 
@@ -16,8 +19,7 @@ class ScenariosController < ApplicationController
     @services = Service.all
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @scenario = Scenario.new(scenario_params)
@@ -48,11 +50,12 @@ class ScenariosController < ApplicationController
   end
 
   private
-    def set_scenario
-      @scenario = Scenario.find(params[:id])
-    end
 
-    def scenario_params
-      params.require(:scenario).permit(:name, scenario_services_attributes: [:service_id, :order, :id])
-    end
+  def set_scenario
+    @scenario = Scenario.find(params[:id])
+  end
+
+  def scenario_params
+    params.require(:scenario).permit(:name, scenario_services_attributes: %i[service_id order id])
+  end
 end

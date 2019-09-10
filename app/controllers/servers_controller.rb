@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class ServersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_server, only: [:edit, :update, :destroy, :show]
+  before_action :set_server, only: %i[edit update destroy show]
 
   def index
     @servers = Server.all
@@ -10,11 +12,9 @@ class ServersController < ApplicationController
     @server = Server.new
   end
 
-  def edit
-  end
+  def edit; end
 
-  def show
-  end
+  def show; end
 
   def create
     @server = Server.new(server_params)
@@ -46,11 +46,12 @@ class ServersController < ApplicationController
   end
 
   private
-    def set_server
-      @server = Server.find(params[:id])
-    end
 
-    def server_params
-      params.require(:server).permit(:host_name, :ip)
-    end
+  def set_server
+    @server = Server.find(params[:id])
+  end
+
+  def server_params
+    params.require(:server).permit(:host_name, :ip)
+  end
 end

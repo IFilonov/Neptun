@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: %i[show edit update destroy]
 
   def index
     @groups = Group.all
@@ -10,8 +12,7 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @group = Group.new(group_params)
@@ -25,8 +26,7 @@ class GroupsController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def update
     respond_to do |format|
@@ -46,7 +46,8 @@ class GroupsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+  # Use callbacks to share common setup or constraints between actions.
   def set_group
     @group = Group.find(params[:id])
   end

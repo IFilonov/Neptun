@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'net/ssh'
 
 class SshService
-  def initialize(host_name, ldap_login, ldap_password)
-    @ssh = Net::SSH.start(host_name, ldap_login, password: ldap_password)
+  def initialize(host_name, login, password)
+    @ssh = Net::SSH.start(host_name, login, password: password)
   end
 
   def send_command(cmd)
@@ -16,5 +18,4 @@ class SshService
   def close
     @ssh.close
   end
-
 end
