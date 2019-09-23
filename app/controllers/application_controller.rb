@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   before_action :set_locale
+  include Pundit
 
   def default_url_options
     I18n.locale == I18n.default_locale ? super : { lang: I18n.locale }
