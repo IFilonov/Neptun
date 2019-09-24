@@ -16,5 +16,11 @@ module Neptun
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.i18n.default_locale = :ru
+    config.active_job.queue_adapter = :sidekiq
+
+    logger = ActiveSupport::Logger.new(ENV['LOG_FILE'] || STDOUT)
+    logger.formatter = ::Logger::Formatter.new
+    logger.level = ENV['LOG_LEVEL'] || 'INFO'
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 end

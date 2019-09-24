@@ -13,7 +13,7 @@ class StatesWorker
       services.reload
       services.each do |s|
         status = s.status || 0
-        next unless s&.user&.ldap_login && s.state
+        next unless s&.user&.ldap_login && s&.user&.password && s&.state
 
         puts "Service #{s.name} processed!"
         puts s.state
