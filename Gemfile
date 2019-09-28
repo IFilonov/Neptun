@@ -42,6 +42,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'net-ssh'
 gem 'sidekiq'
 gem 'sidekiq-status'
+gem "sidekiq-cron", "~> 1.1"
 gem 'pg'
 gem 'pundit'
 gem 'slim-rails'

@@ -27,12 +27,16 @@ class Service < ApplicationRecord
     send_command(:state.to_s, nil, nil, ssh)
   end
 
-  def send_command(service_attribute_name, login, password, ssh = nil)
-    ssh ||= SshService.new(server.host_name, login, password)
-    ssh.send_command_sudo(sudo_name)
-    ssh.send_command(path)
-    answer = ssh.send_command(read_attribute(service_attribute_name))
-    ssh.close
-    answer.byteslice(0, 2000).split(/\n/).join('\n')
+  def send_command(service_attr_name, login, password, ssh = nil)
+    begin
+      ssh ||= SshService.new(server.host_name, login, password)
+      ssh.send_command_sudo(sudo_name)
+      ssh.send_command(path)
+      answer = ssh.send_command(read_attribute(service_attr_name)).byteslice(0, 2000).split(/\n/).join('\n')
+      ssh.close
+      answer
+    rescue SocketError => e
+      "Error: #{e.message}"
+    end
   end
 end

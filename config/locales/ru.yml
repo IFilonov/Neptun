@@ -11,6 +11,7 @@ ru:
       users: "Пользователи"
       dictionaries: "Справочники"
       new_service: "Новый сервис"
+      jobs: "Фоновые задания"
   admin:
     users:
       index:

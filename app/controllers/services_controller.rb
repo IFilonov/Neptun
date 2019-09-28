@@ -53,6 +53,10 @@ class ServicesController < ApplicationController
 
   def restart; end
 
+  def start_scenario
+    ScenarioWorker.perform_async(params[:id])
+  end
+
   private
 
   def send_command
