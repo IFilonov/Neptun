@@ -3,12 +3,14 @@ require 'sidekiq/cron/web'
 
 Rails.application.routes.draw do
 
+  devise_for :users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   authenticate :user do
     mount Sidekiq::Web => '/sidekiq'
   end
   root to: 'services#index'
 
-  devise_for :users, path: :neptun, path_names: {sign_in: :login, sing_out: :logout}, controllers: { registrations: 'users/registrations' }
+  #devise_for :users, path: :neptun, path_names: {sign_in: :login, sing_out: :logout}, controllers: { registrations: 'users/registrations' }
   resources :servers, :groups, :scenarios
   resources :services do
     member do

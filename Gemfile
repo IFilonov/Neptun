@@ -46,6 +46,8 @@ gem "sidekiq-cron", "~> 1.1"
 gem 'pg'
 gem 'pundit'
 gem 'slim-rails'
+gem 'active_admin_theme'
+gem 'activeadmin'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
