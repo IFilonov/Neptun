@@ -20,7 +20,7 @@ class ScenarioWorker
 
 #        Rails.logger.info "--- Service #{s.name} processed! state = #{s.state}"
 #        begin
-#          ssh_connection_pool[s.id] ||= SshService.new(s.server.host_name,
+#          ssh_connection_pool[s.id] ||= SshService.new(s.server.name,
 #                                                       s.user.ldap_login,
 #                                                       s.user.ldap_password)
 #          status = s.do_state(ssh_services[s.id]).to_i

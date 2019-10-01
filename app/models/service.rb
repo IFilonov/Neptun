@@ -29,7 +29,7 @@ class Service < ApplicationRecord
 
   def send_command(service_attr_name, login, password, ssh = nil)
     begin
-      ssh ||= SshService.new(server.host_name, login, password)
+      ssh ||= SshService.new(server.name, login, password)
       ssh.send_command_sudo(sudo_name)
       ssh.send_command(path)
       answer = ssh.send_command(read_attribute(service_attr_name)).byteslice(0, 2000).split(/\n/).join('\n')

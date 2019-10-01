@@ -52,6 +52,6 @@ class ServersController < ApplicationController
   end
 
   def server_params
-    params.require(:server).permit(:host_name, :ip)
+    params.require(:server).permit(:name, :ip)
   end
 end

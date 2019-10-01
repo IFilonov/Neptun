@@ -48,14 +48,15 @@ ActiveRecord::Schema.define(version: 2019_09_29_165627) do
   end
 
   create_table "scenarios", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.integer "user_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_scenarios_on_user_id"
   end
 
   create_table "servers", force: :cascade do |t|
-    t.string "host_name", null: false
+    t.string "name", null: false
     t.string "ip", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -106,6 +107,7 @@ ActiveRecord::Schema.define(version: 2019_09_29_165627) do
 
   add_foreign_key "scenario_services", "scenarios"
   add_foreign_key "scenario_services", "services"
+  add_foreign_key "scenarios", "users"
   add_foreign_key "services", "groups"
   add_foreign_key "services", "servers"
   add_foreign_key "services", "users"

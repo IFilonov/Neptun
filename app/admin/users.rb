@@ -21,6 +21,8 @@ ActiveAdmin.register User do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :ldap_login
+      f.input :ldap_password
     end
     f.actions
   end

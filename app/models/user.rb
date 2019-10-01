@@ -16,4 +16,5 @@ class User < ApplicationRecord
          :trackable
 
   has_many :services
+  has_many :scenarios
 end

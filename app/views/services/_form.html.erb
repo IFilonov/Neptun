@@ -34,7 +34,7 @@
     </tr>
     <tr>
       <td><%= form.label :server_id, class: "text-white" %></td>
-      <td><%= form.collection_select :server_id, Server.all, :id, :host_name, prompt: true %></td>
+      <td><%= form.collection_select :server_id, Server.all, :id, :name, prompt: true %></td>
     </tr>
     <tr>
       <td><%= form.label :user_id, class: "text-white" %></td>

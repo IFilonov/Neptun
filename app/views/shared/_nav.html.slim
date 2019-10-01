@@ -5,15 +5,11 @@ nav.navbar.navbar-dark.fixed-top.nbc
     = link_to t('.new_service'), new_service_path, class: 'navbar-brand'
     .nav-item.dropdown
       a#navbarDropdown.nav-link.dropdown-toggle.text-light aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
-        = t('.dictionaries')
+        = t('.manage')
       .dropdown-menu aria-labelledby="navbarDropdown" 
-        = link_to t('.servers'), servers_path, class: 'dropdown-item'
-        .dropdown-divider
-        = link_to t('.groups'), groups_path, class: 'dropdown-item'
+        = link_to t('.dictionaries'), '/admin/dashboard', class: 'dropdown-item'
         .dropdown-divider
         = link_to t('.scenarios'), scenarios_path, class: 'dropdown-item'
-        .dropdown-divider
-        = link_to t('.users'), admin_users_path, class: 'dropdown-item'
         .dropdown-divider
         = link_to t('.jobs'), '/sidekiq', class: 'dropdown-item'
   span.navbar-text

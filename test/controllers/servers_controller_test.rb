@@ -17,7 +17,7 @@ class ServersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create server" do
     assert_difference('Server.count') do
-      post servers_url, params: { server: { host_name: @server.host_name, ip: @server.ip } }
+      post servers_url, params: { server: { name: @server.name, ip: @server.ip } }
     end
 
     assert_redirected_to server_url(Server.last)
@@ -34,7 +34,7 @@ class ServersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update server" do
-    patch server_url(@server), params: { server: { host_name: @server.host_name, ip: @server.ip } }
+    patch server_url(@server), params: { server: { name: @server.name, ip: @server.ip } }
     assert_redirected_to server_url(@server)
   end
 

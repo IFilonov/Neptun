@@ -12,6 +12,7 @@ ru:
       dictionaries: "Справочники"
       new_service: "Новый сервис"
       jobs: "Фоновые задания"
+      manage: "Управление"
   admin:
     users:
       index:

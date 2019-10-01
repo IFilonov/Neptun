@@ -3,8 +3,8 @@
 require 'net/ssh'
 
 class SshService
-  def initialize(host_name, login, password)
-    @ssh = Net::SSH.start(host_name, login, password: password)
+  def initialize(name, login, password)
+    @ssh = Net::SSH.start(name, login, password: password)
   end
 
   def send_command(cmd)
