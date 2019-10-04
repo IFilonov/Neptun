@@ -1,5 +1,5 @@
 if Rails.env.development?
-  user = User.create(email: 'admin@example.com', password: 'password', password_confirmation: 'password', ldap_login: "admin")
+  user = User.create(name: "Admin", email: 'admin@example.com', password: 'password', password_confirmation: 'password', ldap_login: "admin")
 
   if Service.all.count.zero?
     groups = Group.create([{ name: 'GROUP SERVER' },
