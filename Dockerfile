@@ -21,7 +21,7 @@ COPY . /app/
 ENV GEM_HOME=/bundle
 ENV BUNDLE_PATH $GEM_HOME
 
-RUN gem install bundler --version=2.0.2
+RUN gem install bundler --version=2.0.2 && gem install rails
 
 RUN bundle install
 
@@ -29,4 +29,4 @@ RUN yarn install
 
 EXPOSE 3000
 
-CMD ["rails", "s", "-b", "0.0.0.0"]
+ENTRYPOINT [ "bin/docker-entrypoint.sh" ]
