@@ -2,6 +2,9 @@ version: '3.3'
 
 services:
   postgres:
+    build:
+      context: .
+      dockerfile: ./postgres-setup/Dockerfile
     image: postgres:11.5
     volumes:
       - postgres:/var/lib/postgresql/data
