@@ -5,11 +5,11 @@ require 'sidekiq-cron'
 Sidekiq.logger = Rails.logger
 
 Sidekiq.configure_server  do |config|
-  config.redis =  { url: 'redis://localhost:6379/sidekiq_neptun'}
+  config.redis =  {host: ENV['REDIS_HOST'], port: ENV['REDIS_PORT']}
 end
 
 Sidekiq.configure_client  do |config|
-  config.redis =  { url: 'redis://localhost:6379/sidekiq_neptun'}
+  config.redis =  {host: ENV['REDIS_HOST'], port: ENV['REDIS_PORT']}
 end
 
 Sidekiq::Queue.new("monitor").clear

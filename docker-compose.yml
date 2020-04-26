@@ -14,6 +14,7 @@ services:
 
   redis:
     image: redis:latest
+    hostname: neptun_redis_host
     volumes:
       - redis:/data
     ports:
@@ -28,7 +29,7 @@ services:
       - /tmp
     stdin_open: true
     tty: true
-    command: bash -c "rm -f /app/tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"
+    #command: bash -c "rm -f /app/tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"
     ports:
       - 3000:3000
     volumes:
@@ -46,6 +47,8 @@ services:
       - WEB_CONCURRENCY=1
       - HISTFILE=/app/log/.bash_history
       - PSQL_HISTFILE=/app/log/.psql_history
+      - REDIS_HOST=neptun_redis_host
+      - REDIS_PORT=6379
     depends_on:
       - postgres
       - redis
