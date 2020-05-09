@@ -4,7 +4,7 @@ nav.navbar.navbar-dark.fixed-top.nbc
   - if user_signed_in?
     = link_to t('.new_service'), new_service_path, class: 'navbar-brand'
     .nav-item.dropdown
-      a#navbarDropdown.nav-link.dropdown-toggle.text-light aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
+      a#navbarDropdown.nav-link.dropdown-toggle.text-light aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
         = t('.manage')
       .dropdown-menu aria-labelledby="navbarDropdown" 
         = link_to t('.dictionaries'), '/admin/dashboard', class: 'dropdown-item'
