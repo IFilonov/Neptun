@@ -1,5 +1,8 @@
 {
   "name": "neptun",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@activeadmin/activeadmin": "^2.7.0",
+    "@rails/webpacker": "^4.0.0-rc.8"
+  }
 }

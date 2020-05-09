@@ -9,7 +9,7 @@ gem 'rails'
 gem 'puma'
 # Use SCSS for stylesheets
 gem 'sass-rails'
-# Use Uglifier as compressor for JavaScript assets
+# Use Uglifier as compressor for JavaScrails ript assets
 gem 'uglifier'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
@@ -24,6 +24,7 @@ gem 'jbuilder'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'webpacker', '~> 5.x'
 gem 'devise'
 gem 'rails-i18n'
 # Use ActiveStorage variant

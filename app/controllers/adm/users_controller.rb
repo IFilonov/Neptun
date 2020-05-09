@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::UsersController < ApplicationController
+class Adm::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: %i[destroy edit update]
 
