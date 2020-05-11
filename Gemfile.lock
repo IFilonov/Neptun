@@ -37,7 +37,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_admin_theme (1.1.1)
     activeadmin (2.7.0)
       arbre (~> 1.2, >= 1.2.1)
       formtastic (~> 3.1)
@@ -76,6 +75,10 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     arbre (1.2.1)
       activesupport (>= 3.0.0)
+    arctic_admin (3.2.0)
+      activeadmin (>= 1.1.0, < 3.0)
+      font-awesome-sass (~> 5.0)
+      jquery-rails
     autoprefixer-rails (9.7.6)
       execjs
     bcrypt (3.1.13)
@@ -139,6 +142,8 @@ GEM
     ffi (1.12.2-java)
     ffi (1.12.2-x64-mingw32)
     ffi (1.12.2-x86-mingw32)
+    font-awesome-sass (5.12.0)
+      sassc (>= 1.11)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
@@ -397,8 +402,8 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
-  active_admin_theme
   activeadmin
+  arctic_admin
   bootsnap
   bootstrap
   byebug

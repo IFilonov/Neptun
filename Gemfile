@@ -45,7 +45,7 @@ gem "sidekiq-cron"
 gem 'pg'
 gem 'pundit'
 gem 'slim-rails'
-gem 'active_admin_theme'
+gem 'arctic_admin'
 gem 'activeadmin'
 gem 'cancancan'
 gem 'draper'

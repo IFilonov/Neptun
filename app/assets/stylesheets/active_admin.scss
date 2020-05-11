@@ -9,13 +9,12 @@
 
 // Active Admin's got SASS!
 @import "active_admin/mixins";
-@import "active_admin/base";
+
+@import "arctic_admin/base";
 
 $skinMainFirstColor: #5B008B!default;
 $skinMainSecondColor: #FF4C00!default;
 $skinBorderWindowColor: #B8BABE!default;
-
-@import "wigu/active_admin_theme";
 
 .flashes {
   .flash {
