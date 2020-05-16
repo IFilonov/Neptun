@@ -8,15 +8,8 @@ gem 'rails'
 # Use Puma as the app server
 gem 'puma'
 # Use SCSS for stylesheets
-gem 'sass-rails'
-# Use Uglifier as compressor for JavaScrails ript assets
-gem 'uglifier'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 # Use Redis adapter to run Action Cable in production
@@ -24,6 +17,7 @@ gem 'jbuilder'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'turbolinks', require: false
 gem 'webpacker', '~> 5.x'
 gem 'devise'
 gem 'rails-i18n'
@@ -36,8 +30,6 @@ gem 'rails-i18n'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap'
 
-gem 'jquery-rails'
-gem 'bootstrap'
 gem 'net-ssh'
 gem 'sidekiq'
 gem 'sidekiq-status'

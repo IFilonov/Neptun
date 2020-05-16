@@ -79,8 +79,6 @@ GEM
       activeadmin (>= 1.1.0, < 3.0)
       font-awesome-sass (~> 5.0)
       jquery-rails
-    autoprefixer-rails (9.7.6)
-      execjs
     bcrypt (3.1.13)
     bcrypt (3.1.13-java)
     bindex (0.8.1)
@@ -88,10 +86,6 @@ GEM
       msgpack (~> 1.0)
     bootsnap (1.4.6-java)
       msgpack (~> 1.0)
-    bootstrap (4.4.1)
-      autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.14.3, < 2)
-      sassc-rails (>= 2.0.0)
     builder (3.2.4)
     byebug (11.1.3)
     cancancan (3.1.0)
@@ -106,13 +100,6 @@ GEM
     childprocess (3.0.0)
     chronic_duration (0.10.6)
       numerizer (~> 0.1.1)
-    coffee-rails (5.0.0)
-      coffee-script (>= 2.2.0)
-      railties (>= 5.2.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
     connection_pool (2.2.2)
     crass (1.0.6)
@@ -132,7 +119,6 @@ GEM
     erubi (1.9.0)
     et-orbi (1.2.4)
       tzinfo
-    execjs (2.7.0)
     factory_bot (5.2.0)
       activesupport (>= 4.2.0)
     factory_bot_rails (5.2.0)
@@ -198,7 +184,7 @@ GEM
     mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.14.0)
+    minitest (5.14.1)
     msgpack (1.3.3)
     msgpack (1.3.3-java)
     msgpack (1.3.3-x64-mingw32)
@@ -220,15 +206,14 @@ GEM
     pg (1.2.3-x86-mingw32)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
-    popper_js (1.16.0)
-    public_suffix (4.0.4)
+    public_suffix (4.0.5)
     puma (4.3.3)
       nio4r (~> 2.0)
     puma (4.3.3-java)
       nio4r (~> 2.0)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
-    raabro (1.1.6)
+    raabro (1.3.1)
     rack (2.2.2)
     rack-protection (2.0.8.1)
       rack
@@ -307,8 +292,6 @@ GEM
       rspec-support (~> 3.9)
     rspec-support (3.9.3)
     rubyzip (2.3.0)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.3.0)
       ffi (~> 1.9)
     sassc (2.3.0-x64-mingw32)
@@ -367,8 +350,6 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2020.1)
       tzinfo (>= 1.0.0)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (4.0.2)
@@ -405,16 +386,13 @@ DEPENDENCIES
   activeadmin
   arctic_admin
   bootsnap
-  bootstrap
   byebug
   cancancan
   capybara (>= 2.15)
-  coffee-rails
   devise
   draper
   factory_bot_rails
   jbuilder
-  jquery-rails
   launchy
   letter_opener
   listen
@@ -427,7 +405,6 @@ DEPENDENCIES
   rails-i18n
   rspec
   rspec-rails
-  sass-rails
   selenium-webdriver
   shoulda-matchers
   sidekiq
@@ -439,7 +416,6 @@ DEPENDENCIES
   table_print
   turbolinks
   tzinfo-data
-  uglifier
   web-console
   webdrivers
   webpacker (~> 5.x)

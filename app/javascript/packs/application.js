@@ -17,5 +17,13 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 import 'bootstrap'
+import 'jquery'
+import '@rails/ujs'
+
+import Turbolinks from 'turbolinks'
+Turbolinks.start()
+
+import "../stylesheets/application";
+
 
 console.log('Hello World from Webpacker')
