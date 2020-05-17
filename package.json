@@ -10,7 +10,10 @@
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "rails-erb-loader": "^5.5.2",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.2",
+    "vue-template-compiler": "^2.6.11"
   },
   "devDependencies": {
     "postcss-loader": "^3.0.0",
