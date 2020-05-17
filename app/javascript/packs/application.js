@@ -18,12 +18,13 @@ import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 import 'bootstrap'
 import 'jquery'
-import '@rails/ujs'
+import 'turbolinks'
+import Rails_ujs from '@rails/ujs'
+Rails_ujs.start()
 
-import Turbolinks from 'turbolinks'
-Turbolinks.start()
+
 
 import "../stylesheets/application";
 
-
-console.log('Hello World from Webpacker')
+//$(document).on('turbolinks:load', function (){ alert("turbolinks on load event works") });
+//console.log('Hello World from Webpacker')
