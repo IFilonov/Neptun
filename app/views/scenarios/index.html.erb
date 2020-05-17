@@ -29,7 +29,7 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target=<%= "#modalBindServices#{scenario.id.to_s}" %>>
                           <%= t('.edit_bind_services') %>
                         </button>
-                        <%= render 'bind_services', scenario: scenario %>
+                        <%= render 'bind_services', scenario: scenario, services: @services %>
                       </td>
                       <td><%= link_to t('.delete'), scenario, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
                     </tr>
@@ -42,7 +42,7 @@
       </div>
       <br>
       <!-- Modal -->
-      <%= render 'bind_services', scenario: @scenario %>
+      <%= render 'bind_services', scenario: @scenario, services: @services %>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalBindServices">
         <%= t('.new_bind_services') %>
       </button>

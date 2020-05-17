@@ -1,0 +1,10 @@
+#!/bin/sh
+cat | psql << EOL
+-- Deploy dbsetup
+BEGIN;
+CREATE ROLE NEPTUN WITH
+    CREATEDB
+    LOGIN
+    ENCRYPTED PASSWORD 'PASSWORD';
+END;
+EOL

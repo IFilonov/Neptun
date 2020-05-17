@@ -4,33 +4,43 @@ class StatesWorker
   include Sidekiq::Worker
   sidekiq_options queue: :monitor
 
-  def perform(duration)
+  def perform(*args)
+    exit = args[0]
     ssh_connection_pool = []
-    services = Service.all.order(:id)
+
+    Rails.logger.info "------ StatesWorker started"
+
+    services = Service.includes(:user).order(:id)
 
     loop do
-      puts "StatesWorker #{duration} sec processed!"
       services.reload
       services.each do |s|
         status = s.status || 0
-        next unless s&.user&.ldap_login && s.state
+        next unless s&.user&.ldap_login && s&.user&.ldap_password && s&.state
 
-        puts "Service #{s.name} processed!"
-        puts s.state
+        Rails.logger.info "--- StatesWorker service #{s.name} processed! state = #{s.state}"
         begin
-          ssh_connection_pool[s.id] ||= SshService.new(s.server.host_name,
+          ssh_connection_pool[s.id] ||= SshService.new(s.server.name,
                                                        s.user.ldap_login,
                                                        s.user.ldap_password)
           status = s.do_state(ssh_services[s.id]).to_i
-          puts "State #{s.name} processed!"
         rescue SocketError
-          status -= 1
+          status = -1
+          Rails.logger.info "--- StatesWorker error, status #{s.status} !"
         end
-        s.save! if status != s.status
+        save_status(s, status)
       end
-
-      sleep duration
+      break if exit
+      sleep 5
     end
-    puts 'Exit!'
+    Rails.logger.info '------ StatesWorker exit!'
+  end
+
+  def save_status(service, status)
+    if status != service.status
+      service.status = status
+      service.save!
+      Rails.logger.info "--- StatesWorker saved, status #{service.status} !"
+    end
   end
 end

@@ -3,9 +3,10 @@
 class Scenario < ApplicationRecord
   has_many :scenario_services, dependent: :destroy
   has_many :services, through: :scenario_services
+  belongs_to :user
   accepts_nested_attributes_for :scenario_services
 
-  validates :name, presence: true
+  validates :name, :user_id, presence: true
   validates_associated :scenario_services
 
   def services_name

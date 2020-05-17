@@ -1,23 +1,32 @@
-FROM ruby:2.6.0
+FROM ruby:2.6.4
 
-RUN apt-get update && apt-get install -y curl libpq-dev redis-server postgresql nodejs libffi-dev sudo
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - \
+  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+  && echo 'deb http://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list
 
-WORKDIR /tmp
-ADD Gemfile* ./
+RUN curl -sSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
+  && echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' 11 > /etc/apt/sources.list.d/pgdg.list
 
-ENV APP_HOME /neptun
-COPY . $APP_HOME
-WORKDIR $APP_HOME
+RUN apt-get update -qq && \
+  DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
+    postgresql-client-11 \
+    nodejs \
+    yarn=1.17.3-1
 
-RUN gem install bundler -v 1.17.3
+RUN mkdir /app
+WORKDIR /app
+COPY . /app/
 
-#RUN apt-get install -y openssl libc-dev libxml2-dev libxslt-dev
+ENV GEM_HOME=/bundle
+ENV BUNDLE_PATH $GEM_HOME
 
-RUN bundle install
+RUN gem install bundler --version=2.0.2 && gem install rails
 
-ENV RAILS_ENV=production \
-    RACK_ENV=production
+RUN bundle install && yarn install
+
+RUN chmod +x ./bin/docker-entrypoint.sh
 
 EXPOSE 3000
 
 CMD ["bash"]
+#ENTRYPOINT [ "bin/docker-entrypoint.sh" ]

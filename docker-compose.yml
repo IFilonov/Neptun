@@ -1,0 +1,62 @@
+version: '3.3'
+
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: ./postgres-setup/Dockerfile
+    image: postgres:11.5
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - ./log:/root/log:cached
+    ports:
+      - 5432:5432
+
+  redis:
+    image: redis:latest
+    hostname: neptun_redis_host
+    volumes:
+      - redis:/data
+    ports:
+      - 6379:6379
+
+  rails:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: neptun:1.0
+    tmpfs:
+      - /tmp
+    stdin_open: true
+    tty: true
+    #command: bash -c "rm -f /app/tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app:cached
+      - rails_cache:/app/tmp/cache
+      - bundle:/bundle
+      - node_modules:/app/node_modules
+      - packs:/app/public/packs
+    environment:
+      - NODE_ENV=development
+      - RAILS_ENV=development
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/neptun_development?pool=5
+      - REDIS_URL=redis://redis:6379
+      - BOOTSNAP_CACHE_DIR=/bundle/bootsnap
+      - WEB_CONCURRENCY=1
+      - HISTFILE=/app/log/.bash_history
+      - PSQL_HISTFILE=/app/log/.psql_history
+      - REDIS_HOST=neptun_redis_host
+      - REDIS_PORT=6379
+    depends_on:
+      - postgres
+      - redis
+
+volumes:
+  postgres:
+  redis:
+  rails_cache:
+  bundle:
+  node_modules:
+  packs:

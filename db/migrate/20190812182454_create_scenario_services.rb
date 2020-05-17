@@ -7,8 +7,6 @@ class CreateScenarioServices < ActiveRecord::Migration[5.2]
       t.timestamps
       t.timestamps
     end
-    add_column :scenarios, :name, :string
-    add_column :scenarios, :user_id, :integer
     add_column :scenario_services, :order, :integer
   end
 end

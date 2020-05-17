@@ -1,0 +1,15 @@
+textarea.form-control.ssh-answer.nbc-font rows="3"
+textarea.form-control.ssh-command.nbc-font rows="1" style=("max-height: 28pt;")
+.btn-group.btn-group-toggle data-toggle="buttons" style=("max-height: 28pt; width: 100%;")
+  - @scenarios.each do |scenario|
+    label.btn
+      = link_to(start_scenario_service_path(scenario), remote: true) do
+        input#option1.nbc-orange autocomplete="off" checked="checked" name="options" type="radio" /
+        = scenario.name
+- groups = @services.map { |service| service.group }.uniq
+- groups.each do |group|
+  span.col.col-6.shadow-lg.p-1.mb-1.bg-white.rounded.align-self-start
+    - group_services = @services.map { |service| service if service.group == group }.compact
+    h6#center.card-header.text-monospace style=("height:25px; padding-top:4px;")
+      = group.name
+    = render 'index', services: group_services

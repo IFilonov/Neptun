@@ -3,6 +3,6 @@
 class Server < ApplicationRecord
   has_many :services
 
-  validates :host_name, :ip, presence: true
-  validates :host_name, uniqueness: true
+  validates :name, :ip, presence: true
+  validates :name, uniqueness: true
 end

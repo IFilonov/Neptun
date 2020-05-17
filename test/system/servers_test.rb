@@ -14,7 +14,7 @@ class ServersTest < ApplicationSystemTestCase
     visit servers_url
     click_on "New Server"
 
-    fill_in "Host name", with: @server.host_name
+    fill_in "Host name", with: @server.name
     fill_in "Ip", with: @server.ip
     click_on "Create Server"
 
@@ -26,7 +26,7 @@ class ServersTest < ApplicationSystemTestCase
     visit servers_url
     click_on "Edit", match: :first
 
-    fill_in "Host name", with: @server.host_name
+    fill_in "Host name", with: @server.name
     fill_in "Ip", with: @server.ip
     click_on "Update Server"
 
